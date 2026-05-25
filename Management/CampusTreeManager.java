@@ -138,5 +138,5 @@ public class CampusTreeManager {
 
     public int    getCount()      { return count; }
     public String getCampusName() { return campusName; }
-    WaterTreatmentSystem getWaterSystem() { return waterSystem; }
+    public WaterTreatmentSystem getWaterSystem() { return waterSystem; }
 }
