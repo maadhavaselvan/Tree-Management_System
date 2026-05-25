@@ -1,6 +1,6 @@
 package Flora;
 import Management.Waterable;
-public abstract class Flora implements Waterable {
+public abstract class Tree implements Waterable {
 
     
     private final int    treeId;
@@ -10,7 +10,7 @@ public abstract class Flora implements Waterable {
     private  double heightMeters;
     private static int idCounter = 0;   
 
-    public Flora(String name, String location, int ageYears, double heightMeters) {
+    public Tree(String name, String location, int ageYears, double heightMeters) {
         this.name          = name;
         this.location      = location;
         this.ageYears      = ageYears;
