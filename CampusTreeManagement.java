@@ -6,16 +6,13 @@ import java.util.Scanner;
 public class CampusTreeManagement {
     private static void addTreeInteractively(Scanner sc, CampusTreeManager mgr) {
 
-        System.out.println("\n  ┌─────────────────────────────────────┐");
-        System.out.println("  │         ADD A NEW TREE              │");
-        System.out.println("  ├─────────────────────────────────────┤");
-        System.out.println("  │  1. Fruit-Bearing Plant             │");
-        System.out.println("  │  2. Flower-Bearing Plant            │");
-        System.out.println("  │  3. Fruit-Bearing Tree (large)      │");
-        System.out.println("  │  4. Flower-Bearing Tree (large)     │");
-        System.out.println("  │  5. Shade Tree                      │");
-        System.out.println("  │  6. Medicinal Tree                  │");
-        System.out.println("  └─────────────────────────────────────┘");
+        System.out.println("           ADD A NEW TREE              ");
+        System.out.println("    1. Fruit-Bearing Plant             ");
+        System.out.println("    2. Flower-Bearing Plant            ");
+        System.out.println("    3. Fruit-Bearing Tree (large)      ");
+        System.out.println("    4. Flower-Bearing Tree (large)     ");
+        System.out.println("    5. Shade Tree                      ");
+        System.out.println("    6. Medicinal Tree                  ");
         System.out.print("  Choose tree type (1-6): ");
 
         int type;
@@ -316,11 +313,9 @@ public class CampusTreeManagement {
 
         CampusTreeManager mgr = new CampusTreeManager("Green Valley College", 25, wts);
 
-        System.out.println("\n╔══════════════════════════════════════════╗");
-        System.out.println("║   Campus Tree Management System v1.0    ║");
-        System.out.println("║   Green Valley College                   ║");
-        System.out.println("╚══════════════════════════════════════════╝");
-        System.out.println("\n  Registering campus trees...\n");
+        System.out.println("   Campus Tree Management System v1.0    ");
+        System.out.println("   Green Valley College                   ");
+\        System.out.println("\n  Registering campus trees...\n");
 
         mgr.addTree(new FruitBearingPlant(
                 "Guava Bush",  "Garden Zone",   3, 1.8, "Psidium guajava", false,
@@ -374,23 +369,20 @@ public class CampusTreeManagement {
 
         boolean running = true;
         while (running) {
-            System.out.println("\n┌──────────────────────────────────────┐");
-            System.out.println("│              MAIN  MENU              │");
-            System.out.println("├──────────────────────────────────────┤");
-            System.out.println("│  1. List all trees                   │");
-            System.out.println("│  2. View tree details by ID          │");
-            System.out.println("│  3. Filter trees by type             │");
-            System.out.println("│  4. Filter trees by zone             │");
-            System.out.println("│  5. Sellable produce inventory       │");
-            System.out.println("│  6. Sell produce from a tree         │");
-            System.out.println("│  7. Harvest fruit from a tree        │");
-            System.out.println("│  8. Water all trees                  │");
-            System.out.println("│  9. Refill water reservoir           │");
-            System.out.println("│ 10. Water treatment report           │");
-            System.out.println("│ 11. Full campus tree report          │");
-            System.out.println("│ 12. Add a new tree                   │");
-            System.out.println("│ 13. Exit                             │");
-            System.out.println("└──────────────────────────────────────┘");
+            System.out.println("              MAIN  MENU              ");
+            System.out.println("  1. List all trees                   ");
+            System.out.println("  2. View tree details by ID          ");
+            System.out.println("  3. Filter trees by type             ");
+            System.out.println("  4. Filter trees by zone             ");
+            System.out.println("  5. Sellable produce inventory       ");
+            System.out.println("  6. Sell produce from a tree         ");
+            System.out.println("  7. Harvest fruit from a tree        ");
+            System.out.println("  8. Water all trees                  ");
+            System.out.println("  9. Refill water reservoir           ");
+            System.out.println(" 10. Water treatment report           ");
+            System.out.println(" 11. Full campus tree report          ");
+            System.out.println(" 12. Add a new tree                   ");
+            System.out.println(" 13. Exit                             ");
             System.out.print("  Enter choice: ");
 
             int choice = -1;
