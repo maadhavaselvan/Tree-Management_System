@@ -4,52 +4,52 @@ import Management.InvalidSaleException;
 public class FlowerBearingPlant extends Plant implements Sellable {
 
     private final String flowerName;
-    private       int    stockBunches;
+    private int stockBunches;
     private final double pricePerBunch;
     private final String bloomSeason;
 
-    public FlowerBearingPlant(String name, String location, int age, double height,
-                               String species, boolean potted,
-                               String flowerName, int stockBunches,
-                               double pricePerBunch, String bloomSeason) {
+    public FlowerBearingPlant(String name, String location, int age, double height, String species, boolean potted,
+                               String flowerName, int stockBunches, double pricePerBunch, String bloomSeason) {
         super(name, location, age, height, species, potted);
-        this.flowerName    = flowerName;
-        this.stockBunches  = stockBunches;
+        this.flowerName = flowerName;
+        this.stockBunches = stockBunches;
         this.pricePerBunch = pricePerBunch;
-        this.bloomSeason   = bloomSeason;
+        this.bloomSeason = bloomSeason;
     }
-
-    @Override public String getTreeType()     { return "Flower-Bearing Plant"; }
-    @Override public double getSalePrice()    { return pricePerBunch; }
-    @Override public String getProductName()  { return flowerName; }
-    @Override public int    getAvailableStock(){ return stockBunches; }
-
-    @Override
+    public String getTreeType()
+    { 
+        return "Flower-Bearing Plant"; 
+    }
+    public double getSalePrice()
+    { 
+        return pricePerBunch; 
+    }
+    public String getProductName()
+    { 
+        return flowerName; 
+    }
+    public int getAvailableStock()
+    { 
+        return stockBunches; 
+    }
     public String getCareInstructions() {
         return "Water daily; add compost weekly. Peak bloom: " + bloomSeason + ".";
     }
-
-    @Override
     public void sell(int qty) throws InvalidSaleException {
-        if (qty <= 0)          throw new InvalidSaleException("Quantity must be > 0.");
-        if (qty > stockBunches) throw new InvalidSaleException(
-                "Only " + stockBunches + " bunches of " + flowerName + " in stock.");
+        if (qty <= 0) 
+            throw new InvalidSaleException("Quantity must be > 0.");
+        if (qty > stockBunches) 
+            throw new InvalidSaleException("Only " + stockBunches + " bunches of " + flowerName + " in stock.");
         stockBunches -= qty;
-        System.out.printf("  Sold %d bunches of %-12s @ Rs %.2f each  =  Rs %.2f%n",
-                qty, flowerName, pricePerBunch, qty * pricePerBunch);
+        System.out.println("  Sold " + qty + " bunches of " + flowerName + " @ Rs " + pricePerBunch + " each  =  Rs " + (qty * pricePerBunch));
     }
-
     public void bloom(int bunches) {
         stockBunches += bunches;
-        System.out.println("  " + flowerName + " bloomed! +" + bunches
-                + " bunches. Stock: " + stockBunches + ".");
+        System.out.println("  " + flowerName + " bloomed! +" + bunches + " bunches. Stock: " + stockBunches + ".");
     }
-
-    @Override
     public void displayInfo() {
         super.displayInfo();
-        System.out.printf("  Flower    : %-12s  Stock: %d bunches  Price: Rs %.2f/bunch%n",
-                flowerName, stockBunches, pricePerBunch);
-        System.out.println("  Bloom     : " + bloomSeason);
+        System.out.println("  Flower : " + flowerName + "  Stock: " + stockBunches + " bunches  Price: Rs " + pricePerBunch + "/bunch");
+        System.out.println("  Bloom : " + bloomSeason);
     }
 }
