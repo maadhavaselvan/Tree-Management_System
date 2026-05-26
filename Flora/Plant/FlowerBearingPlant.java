@@ -8,9 +8,8 @@ public class FlowerBearingPlant extends Plant implements Sellable {
     private final double pricePerBunch;
     private final String bloomSeason;
 
-    public FlowerBearingPlant(String name, String location, int age, double height, String species, boolean potted,
-                              String flowerName, int stockBunches, double pricePerBunch, String bloomSeason) {
-        super(name, location, age, height, species, potted);
+    public FlowerBearingPlant(String name, String location, int age, double height, boolean potted, String flowerName, int stockBunches, double pricePerBunch, String bloomSeason) {
+        super(name, location, age, height, potted);
         this.flowerName = flowerName;
         this.stockBunches = stockBunches;
         this.pricePerBunch = pricePerBunch;
@@ -47,17 +46,17 @@ public class FlowerBearingPlant extends Plant implements Sellable {
         if (qty > stockBunches)
             throw new InvalidSaleException("Only " + stockBunches + " bunches of " + flowerName + " in stock.");
         stockBunches -= qty;
-        System.out.println("  Sold " + qty + " bunches of " + flowerName + " @ Rs " + pricePerBunch + " each  =  Rs " + (qty * pricePerBunch));
+        System.out.println("Sold " + qty + " bunches of " + flowerName + " @ Rs " + pricePerBunch + " each  =  Rs " + (qty * pricePerBunch));
     }
     public void bloom(int bunches) {
         stockBunches += bunches;
-        System.out.println("  " + flowerName + " bloomed! +" + bunches + " bunches. Stock: " + stockBunches + ".");
+        System.out.println(flowerName + " bloomed! +" + bunches + " bunches. Stock: " + stockBunches + ".");
     }
     public boolean isSellable() { return true; }
     @Override
     public void displayInfo() {
         super.displayInfo();
-        System.out.println("  Flower : " + flowerName + "  Stock: " + stockBunches + " bunches  Price: Rs " + pricePerBunch + "/bunch");
-        System.out.println("  Bloom : " + bloomSeason);
+        System.out.println("Flower : " + flowerName + "  Stock: " + stockBunches + " bunches  Price: Rs " + pricePerBunch + "/bunch");
+        System.out.println("Bloom : " + bloomSeason);
     }
 }

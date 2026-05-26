@@ -10,9 +10,9 @@ public class FruitBearingPlant extends Plant implements Sellable {
     private final int harvestStart;
     private final int harvestEnd;
 
-    public FruitBearingPlant(String name, String location, int age, double height, String species, boolean potted,
+    public FruitBearingPlant(String name, String location, int age, double height, boolean potted,
                              String fruitName, int stockKg, double pricePerKg, int harvestStart, int harvestEnd) {
-        super(name, location, age, height, species, potted);
+        super(name, location, age, height, potted);
         this.fruitName = fruitName;
         this.stockKg = stockKg;
         this.pricePerKg = pricePerKg;

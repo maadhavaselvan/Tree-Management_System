@@ -3,13 +3,11 @@ import Flora.Flora;
 import Management.InsufficientWaterException;
 public class Plant extends Flora {
 
-    private final String  species;
     private final boolean isPotted;
     private double  totalWaterGiven;
 
-    public Plant(String name, String location, int age, double height, String species, boolean isPotted) {
+    public Plant(String name, String location, int age, double height, boolean isPotted) {
         super(name, location, age, height);
-        this.species = species;
         this.isPotted = isPotted;
     }
     @Override public String getTreeType()
@@ -39,7 +37,7 @@ public class Plant extends Flora {
         if (liters < getWaterRequirementLiters())
             throw new InsufficientWaterException( getName() + " needs at least " + getWaterRequirementLiters() + " L.");
         totalWaterGiven += liters;
-        System.out.println("  Watered " + getName() + " with " + liters + " L.");
+        System.out.println("Watered " + getName() + " with " + liters + " L.");
     }
     @Override
     public String getWaterStatus() {
@@ -47,9 +45,8 @@ public class Plant extends Flora {
     }
     public void displayInfo() {
         super.displayInfo();
-        System.out.println("  Species : " + species);
-        System.out.println("  Potted : " + isPotted);
-        System.out.println("  " + getWaterStatus());
+        System.out.println("Potted : " + isPotted);
+        System.out.println(getWaterStatus());
     }
     public void displayInfo(boolean showCost) {
         displayInfo();

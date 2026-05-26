@@ -1,16 +1,12 @@
-package Flora.LargeTree;
+package Flora.Tree;
 import Flora.Flora;
 import Management.InsufficientWaterException;
-public class LargeTree extends Flora {
-
-    private final double canopySpreadMeters;
-    private final String rootType;
+public class Tree extends Flora {
     private double totalWaterGiven;
 
-    public LargeTree(String name, String location, int age, double height, double canopy, String rootType) {
+    public Tree(String name, String location, int age, double height)
+    {
         super(name, location, age, height);
-        this.canopySpreadMeters = canopy;
-        this.rootType = rootType;
     }
     @Override
     public String getTreeType()
@@ -54,8 +50,6 @@ public class LargeTree extends Flora {
     @Override
     public void displayInfo() {
         super.displayInfo();
-        System.out.println("  Canopy    : " + canopySpreadMeters + " m spread");
-        System.out.println("  Root type : " + rootType);
         System.out.println("  " + getWaterStatus());
     }
 

@@ -52,10 +52,6 @@ public abstract class Flora implements Waterable {
     {
         return location;
     }
-    public int getAgeYears()
-    {
-        return ageYears;
-    }
     public double getHeightMeters()
     {
         return heightMeters;
@@ -69,20 +65,8 @@ public abstract class Flora implements Waterable {
     {
         this.location = l;
     }
-    public void setAgeYears(int a)
-    {
-        this.ageYears = a;
-    }
-    public void setHeightMeters(double h)
-    {
-        this.heightMeters = h;
-    }
     public static int  getTotalCreated()
     {
         return idCounter;
-    }
-    public static void resetIdCounter()
-    {
-        idCounter = 0;
     }
 }

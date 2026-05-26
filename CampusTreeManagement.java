@@ -1,5 +1,5 @@
 import Flora.*;
-import Flora.LargeTree.*;
+import Flora.Tree.*;
 import Flora.Plant.*;
 import Management.*;
 
@@ -20,7 +20,58 @@ public class CampusTreeManagement {
             }
         }
     }
-
+    private static String locations(Scanner sc)
+    {
+        int choice;
+        boolean runs=true;
+        String location="";
+        while (runs)
+        {
+            System.out.println("Location / zone : ");
+            System.out.println("1.Academic Block");
+            System.out.println("2.Krishna Hostel");
+            System.out.println("3.Tungabhadra Hostel");
+            System.out.println("4.Bheema Hostel");
+            System.out.println("5.Play Area");
+            System.out.print("Enter your choice:");
+            try {
+                choice = sc.nextInt();
+                sc.nextLine();
+            }
+            catch (InputMismatchException e)
+            {
+                sc.nextLine();
+                System.out.println("Enter an integer");
+                continue;
+            }
+            switch(choice)
+            {
+                case 1:
+                    location="Academic Block";
+                    runs=false;
+                    break;
+                case 2:
+                    location="Krishna Hostel";
+                    runs=false;
+                    break;
+                case 3:
+                    location="Tungabhadra Hostel";
+                    runs=false;
+                    break;
+                case 4:
+                    location="Bheema Hostel";
+                    runs=false;
+                    break;
+                case 5:
+                    location="Play Area";
+                    runs=false;
+                    break;
+                default:
+                    System.out.println("Enter a value between 1 and 5");
+            }
+        }
+        return location;
+    }
     private static double readDouble(Scanner sc, String prompt)
     {
         while (true) {
@@ -59,19 +110,14 @@ public class CampusTreeManagement {
             sc.nextLine();
             return;
         }
-
         System.out.print("Tree name : ");
         String name = sc.nextLine();
-        System.out.print("Location / zone : ");
-        String location = sc.nextLine();
-
+        String location=locations(sc);
         int age=readInt(sc,"Enter the age");
         double height=readDouble(sc,"Enter your Height(meters)");
         try {
             switch (type) {
                 case 1: {
-                    System.out.print("Species : ");
-                    String species = sc.nextLine();
                     System.out.print("Potted? (y/n) : ");
                     String pot = sc.nextLine();
                     boolean potted = false;
@@ -85,15 +131,10 @@ public class CampusTreeManagement {
                     double price=readDouble(sc,"Price per kg (Rs) : ");
                     int hStart=readInt(sc,"Harvest start month (1-12) : ");
                     int hEnd=readInt(sc,"Harvest end month (1-12) : ");
-                    mgr.addTree(new FruitBearingPlant(
-                            name, location, age, height,
-                            species, potted,
-                            fruitName, stockKg, price, hStart, hEnd));
+                    mgr.addTree(new FruitBearingPlant(name, location, age, height, potted, fruitName, stockKg, price, hStart, hEnd));
                     break;
                 }
                 case 2: {
-                    System.out.print("Species : ");
-                    String species = sc.nextLine();
                     System.out.print("Potted? (y/n) : ");
                     String pot = sc.nextLine();
                     boolean potted = false;
@@ -108,64 +149,36 @@ public class CampusTreeManagement {
                     System.out.print("Bloom season : ");
                     String season = sc.nextLine();
                     mgr.addTree(new FlowerBearingPlant(
-                            name, location, age, height,
-                            species, potted,
-                            flowerName, stockBunches, price, season));
+                            name, location, age, height, potted, flowerName, stockBunches, price, season));
                     break;
                 }
                 case 3: {
-                    double canopy=readDouble(sc,"Canopy spread (m) : ");
-                    System.out.print("Root type : ");
-                    String rootType = sc.nextLine();
                     System.out.print("Fruit name : ");
                     String fruitName = sc.nextLine();
                     int stockKg=readInt(sc,"Initial stock (kg) : ");
                     double price=readDouble(sc,"Price per kg (Rs) : ");
-                    mgr.addTree(new FruitBearingTree(
-                            name, location, age, height,
-                            canopy, rootType,
-                            fruitName, stockKg, price));
+                    mgr.addTree(new FruitBearingTree(name, location, age, height, fruitName, stockKg, price));
                     break;
                 }
 
                 case 4: {
-                    double canopy=readDouble(sc,"Canopy spread (m) : ");
-                    System.out.print("Root type : ");
-                    String rootType = sc.nextLine();
                     System.out.print("Flower/garland name : ");
                     String flowerName = sc.nextLine();
 
                     int stockGarlands=readInt(sc,"Initial stock (garlands) : ");
                     double price=readDouble(sc,"Price per garland (Rs) : ");
-                    mgr.addTree(new FlowerBearingTree(
-                            name, location, age, height,
-                            canopy, rootType,
-                            flowerName, stockGarlands, price));
+                    mgr.addTree(new FlowerBearingTree(name, location, age, height, flowerName, stockGarlands, price));
                     break;
                 }
 
                 case 5: {
                     double canopy=readDouble(sc,"Canopy spread (m) : ");
-                    System.out.print("Root type : ");
-                    String rootType = sc.nextLine();
 
-                    System.out.print("Area it shades : ");
-                    String beneficiary = sc.nextLine();
-
-                    int benches=readInt(sc,"Benches nearby : ");
-
-                    mgr.addTree(new ShadeTree(
-                            name, location, age, height,
-                            canopy, rootType,
-                            beneficiary, benches));
+                    mgr.addTree(new ShadeTree(name, location, age, height, canopy));
                     break;
                 }
 
                 case 6: {
-                    double canopy=readDouble(sc,"Canopy spread (m) : ");
-                    System.out.print("Root type : ");
-                    String rootType = sc.nextLine();
-
                     int numUses=readInt(sc,"Number of medicinal uses : ");
 
                     String[] uses = new String[numUses];
@@ -173,13 +186,7 @@ public class CampusTreeManagement {
                         System.out.print("  Use " + (i + 1) + " : ");
                         uses[i] = sc.nextLine();
                     }
-                    System.out.print("Managing dept : ");
-                    String dept = sc.nextLine();
-
-                    mgr.addTree(new MedicinalTree(
-                            name, location, age, height,
-                            canopy, rootType,
-                            uses, dept));
+                    mgr.addTree(new MedicinalTree(name, location, age, height, uses));
                     break;
                 }
 
@@ -195,7 +202,7 @@ public class CampusTreeManagement {
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
-        String[] zones = { "Academic Block", "Krishna Hostel", "Tungabhadra Hostel", "Bheema Hostel", "Play Area" };
+        String[] zones = {"Academic Block", "Krishna Hostel", "Tungabhadra Hostel", "Bheema Hostel", "Play Area" };
         double[] allocations = {1500,1250,1250,2000,4000 };
         WaterTreatmentSystem wts = new WaterTreatmentSystem(10000.0,zones,allocations);
 
@@ -205,31 +212,31 @@ public class CampusTreeManagement {
         System.out.println("   INDIAN INSTITUTE OF INFORMATION TECHNOLOGY RAICHUR");
         System.out.println("\n  Registering campus trees...\n");
 
-        mgr.addTree(new FruitBearingPlant("Guava Bush", "Garden Zone", 3, 1.8, "Psidium guajava", false, "Guava", 40, 60.0, 7, 10));
+        mgr.addTree(new FruitBearingPlant("Guava Bush", "Academic Block", 3, 1.8, false, "Guava", 40, 60.0, 7, 10));
 
-        mgr.addTree(new FruitBearingPlant("Banana Plant", "Sports Ground", 2, 2.5, "Musa acuminata", false, "Banana", 80, 30.0, 3, 9));
+        mgr.addTree(new FruitBearingPlant("Banana Plant", "Krishna Hostel", 2, 2.5, false, "Banana", 80, 30.0, 3, 9));
 
-        mgr.addTree(new FlowerBearingPlant("Rose Bush", "Arts Block", 1, 0.9, "Rosa", true, "Rose", 50, 15.0, "Spring"));
+        mgr.addTree(new FlowerBearingPlant("Rose Bush", "Tungabhadra Hostel", 1, 0.9, true, "Rose", 50, 15.0, "Spring"));
 
-        mgr.addTree(new FlowerBearingPlant("Marigold", "Garden Zone", 1, 0.6, "Tagetes erecta", false, "Marigold", 100, 10.0, "Winter"));
+        mgr.addTree(new FlowerBearingPlant("Marigold", "Krishna Hostel", 1, 0.6, false, "Marigold", 100, 10.0, "Winter"));
 
-        mgr.addTree(new FruitBearingTree("Mango Tree", "Science Block", 20, 12.0, 8.0, "Taproot", "Mango", 200, 80.0));
+        mgr.addTree(new FruitBearingTree("Mango Tree", "Tungabhadra Hostel", 20, 12.0,  "Mango", 200, 80.0));
 
-        mgr.addTree(new FruitBearingTree("Jackfruit Tree", "Garden Zone", 15, 10.0, 6.5, "Taproot", "Jackfruit", 100, 50.0));
+        mgr.addTree(new FruitBearingTree("Jackfruit Tree", "Bheema Hostel", 15, 10.0,  "Jackfruit", 100, 50.0));
 
-        mgr.addTree(new FlowerBearingTree("Gulmohar Tree", "Arts Block", 25, 15.0, 10.0, "Lateral", "Gulmohar Flower", 60, 20.0));
+        mgr.addTree(new FlowerBearingTree("Gulmohar Tree", "Play Area", 25, 15.0, "Gulmohar Flower", 60, 20.0));
 
-        mgr.addTree(new FlowerBearingTree("Jasmine Climber", "Garden Zone", 10, 5.0, 3.5, "Fibrous", "Jasmine Garland", 80, 25.0));
+        mgr.addTree(new FlowerBearingTree("Jasmine Climber", "Play Area", 10, 5.0, "Jasmine Garland", 80, 25.0));
 
-        mgr.addTree(new ShadeTree("Banyan Tree", "Central Campus", 50, 20.0, 25.0, "Prop Roots", "Main Quadrangle", 6));
+        mgr.addTree(new ShadeTree("Banyan Tree", "Academic Block", 50, 20.0, 25.0));
 
-        mgr.addTree(new ShadeTree("Neem Tree", "Sports Ground", 30, 16.0, 12.0, "Taproot", "Sports Pavilion", 4));
+        mgr.addTree(new ShadeTree("Neem Tree", "Bheema Hostel", 30, 16.0, 12.0));
 
-        mgr.addTree(new MedicinalTree("Tulsi Grove", "Science Block", 5, 1.2, 2.0, "Fibrous", new String[]{"Immunity booster", "Cough remedy", "Antiseptic"}, "Pharmacy Dept"));
+        mgr.addTree(new MedicinalTree("Tulsi Grove", "Krishna Hostel", 5, 1.2,  new String[]{"Immunity booster", "Cough remedy", "Antiseptic"}));
 
-        mgr.addTree(new MedicinalTree("Ashwagandha", "Garden Zone", 4, 1.5, 1.5, "Taproot",new String[]{"Stress relief", "Anti-inflammatory"}, "Life Sciences Dept"));
-
-        while (true) {
+        mgr.addTree(new MedicinalTree("Ashwagandha", "Play Area", 4, 1.5,  new String[]{"Stress relief", "Anti-inflammatory"}));
+        boolean running=true;
+        while (running) {
             System.out.println("              MAIN  MENU");
             System.out.println("1. List all trees");
             System.out.println("2. View tree details by ID ");
@@ -269,8 +276,7 @@ public class CampusTreeManagement {
                     break;
 
                 case 4:
-                    System.out.print("Enter zone keyword (e.g. Garden, Science, Arts, Sports, Central): ");
-                    mgr.listAllTrees(sc.nextLine(), true);
+                    mgr.listAllTrees(locations(sc), true);
                     break;
 
                 case 5:

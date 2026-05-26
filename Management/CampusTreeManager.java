@@ -38,7 +38,7 @@ public class CampusTreeManager
         System.out.println("Total trees on campus: " + count);
     }
     public void listAllTrees(String filterType) {
-        System.out.println("\n  Trees matching type: \"" + filterType + "\"");
+        System.out.println("\nTrees matching type: \"" + filterType + "\"");
         boolean found = false;
         for (int i = 0; i < count; i++) {
             if (trees[i].getTreeType().toLowerCase().equals(filterType.toLowerCase())) 
@@ -48,7 +48,7 @@ public class CampusTreeManager
             }
         }
         if (!found) 
-            System.out.println("  No trees matched.");
+            System.out.println("No trees matched.");
     }
     public void listAllTrees(String zone, boolean byLocation) {
         if (!byLocation) 
@@ -56,7 +56,7 @@ public class CampusTreeManager
             listAllTrees(zone); 
             return; 
         }
-        System.out.println("\n  Trees in zone: \"" + zone + "\"");
+        System.out.println("\nTrees in zone: \"" + zone + "\"");
         boolean found = false;
         for (int i = 0; i < count; i++) {
             if (trees[i].getLocation().toLowerCase().equals(zone.toLowerCase())) {
@@ -65,11 +65,11 @@ public class CampusTreeManager
             }
         }
         if (!found) 
-            System.out.println("  No trees in that zone.");
+            System.out.println("No trees in that zone.");
     }
 
     public void waterAllTrees() {
-        System.out.println("\n  --- Watering all trees ---");
+        System.out.println("\n Watering all trees");
         for (int i = 0; i < count; i++) {
             try
             {
@@ -101,17 +101,16 @@ public class CampusTreeManager
     }
 
     public void displayAllTreeInfo() {
-        System.out.println("\n======= Full Campus Tree Report =======");
+        System.out.println("\nFull Campus Tree Report");
         for (int i = 0; i < count; i++) {
-            System.out.println("\n--- Tree " + (i + 1) + " of " + count + " ---");
+            System.out.println("\nTree " + (i + 1) + " of " + count );
             trees[i].displayInfo();
         }
     }
 
     public void displaySalesInventory() {
-        System.out.println("\n  ====== Sellable Produce Inventory ======");
+        System.out.println("\n Sellable Produce Inventory ");
         System.out.println("  ID   Tree Name            Product                   Stock   Price (Rs)");
-        System.out.println("  " + "─".repeat(70));
         for (int i = 0; i < count; i++) {
             if (trees[i].isSellable()) {
                 System.out.println("  " + trees[i].getTreeId() + " " + trees[i].getName() + " " + trees[i].getProductName() + " " + trees[i].getAvailableStock() + " " + trees[i].getSalePrice());
