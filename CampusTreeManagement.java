@@ -223,6 +223,7 @@ public class CampusTreeManagement {
         mgr.addTree(new MedicinalTree("Ashwagandha", "Play Area", 4, 1.5,  new String[]{"Stress relief", "Anti-inflammatory"}));
         boolean running=true;
         while (running) {
+            System.out.println();
             System.out.println("              MAIN  MENU");
             System.out.println("1. List all trees");
             System.out.println("2. View tree details by ID ");
@@ -284,13 +285,12 @@ public class CampusTreeManagement {
                 case 6:
                     mgr.displaySalesInventory();
                     id=readInt(sc,"Enter Tree ID to sell from: ");
-                    System.out.print("Enter quantity: ");
                     int qty = readInt(sc,"Enter quantity: ");
                     mgr.sellFromTree(id, qty);
                     break;
 
                 case 7:
-                    mgr.listAllTrees("Fruit");
+                    mgr.FruitTrees();
                     id=readInt(sc,"Enter Fruit Tree ID: ");
                     int kg  = readInt(sc,"Enter kg to harvest: ");
                     mgr.harvestFromTree(id, kg);
@@ -327,7 +327,6 @@ public class CampusTreeManagement {
                     System.out.println("Invalid choice. Choose 1–13.");
             }
         }
-
         sc.close();
     }
 }

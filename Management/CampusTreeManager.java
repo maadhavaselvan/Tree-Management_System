@@ -50,6 +50,19 @@ public class CampusTreeManager
         if (!found)
             System.out.println("No trees matched.");
     }
+    public void FruitTrees() {
+        System.out.println("\nTrees which can be harvested: \"" );
+        boolean found = false;
+        for (int i = 0; i < count; i++) {
+            if (trees[i].getTreeType().equals("Fruit-Bearing Plant") ||trees[i].getTreeType().equals("Fruit-Bearing Tree") )
+            {
+                System.out.println("    [" + trees[i].getTreeId() + "] " + trees[i].getName() + " @ " + trees[i].getLocation());
+                found = true;
+            }
+        }
+    if (!found)
+        System.out.println("No trees matched.");
+    }
     public void listAllTrees(int type) {
         String filterType="";
         switch (type)
