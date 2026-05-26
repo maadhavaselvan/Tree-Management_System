@@ -10,11 +10,6 @@ public abstract class Tree implements Waterable {
     private  double heightMeters;
     private static int idCounter = 0;   
 
-
-public void harvest(int amount) throws Management.InvalidHarvestException {
-    System.out.println("  [!] " + getName() + " does not produce harvestable fruit.");
-}
-
     public Tree(String name, String location, int ageYears, double heightMeters) {
         this.name          = name;
         this.location      = location;
@@ -26,13 +21,6 @@ public void harvest(int amount) throws Management.InvalidHarvestException {
     public abstract String getTreeType();
     public abstract String getCareInstructions();
     public abstract double estimatedGrowthPerYear();
-    public boolean isSellable(){ return false; }
-    public String  getProductName(){ return ""; }
-    public double  getSalePrice(){ return 0.0; }
-    public int getAvailableStock() { return 0; }
-    public void sell(int qty) throws Management.InvalidSaleException {
-        throw new Management.InvalidSaleException(getName() + " has no sellable produce.");
-    }
 
     public void displayInfo() {
         System.out.println("  ID        : " + treeId);

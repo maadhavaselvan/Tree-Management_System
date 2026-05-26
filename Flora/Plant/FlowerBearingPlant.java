@@ -23,7 +23,6 @@ public class FlowerBearingPlant extends Plant implements Sellable {
     @Override public double getSalePrice()    { return pricePerBunch; }
     @Override public String getProductName()  { return flowerName; }
     @Override public int    getAvailableStock(){ return stockBunches; }
-    public boolean isSellable() { return true; }
 
     @Override
     public String getCareInstructions() {
