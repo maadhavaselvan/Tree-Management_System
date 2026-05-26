@@ -6,8 +6,8 @@ import Management.*;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 public class CampusTreeManagement {
-    private static void addTreeInteractively(Scanner sc, CampusTreeManager mgr) {
-
+    private static void addTreeInteractively(Scanner sc, CampusTreeManager mgr)
+    {
         System.out.println("           ADD A NEW TREE");
         System.out.println("    1. Fruit-Bearing Plant");
         System.out.println("    2. Flower-Bearing Plant");
@@ -16,7 +16,6 @@ public class CampusTreeManagement {
         System.out.println("    5. Shade Tree");
         System.out.println("    6. Medicinal Tree");
         System.out.print("  Choose tree type (1-6): ");
-
         int type;
         try {
             type = sc.nextInt();
@@ -25,7 +24,8 @@ public class CampusTreeManagement {
                 System.out.println("Invalid type. Choose 1–6.");
                 return;
             }
-        } catch (InputMismatchException e) {
+        }
+        catch (InputMismatchException e) {
             System.out.println("Invalid input.");
             return;
         }
@@ -40,7 +40,8 @@ public class CampusTreeManagement {
             System.out.print("Age (years): ");
             age = sc.nextInt();
             sc.nextLine();
-        } catch (InputMismatchException e) {
+        }
+        catch (InputMismatchException e) {
             System.out.println(" Age must be a whole number.");
             return;
         }
@@ -50,7 +51,8 @@ public class CampusTreeManagement {
             System.out.print("  Height (metres)  : ");
             height =sc.nextDouble();
             sc.nextLine();
-        } catch (InputMismatchException e) {
+        }
+        catch (InputMismatchException e) {
             System.out.println(" Height must be a number.");
             return;
         }
@@ -60,7 +62,6 @@ public class CampusTreeManagement {
                 case 1: {
                     System.out.print(" Species: ");
                     String species = sc.nextLine();
-
                     System.out.print(" Potted? (y/n) : ");
                     String pot = sc.nextLine();
                     boolean potted = false;
@@ -75,7 +76,8 @@ public class CampusTreeManagement {
                         System.out.print("  Initial stock (kg): ");
                         stockKg =  sc.nextInt();
                         sc.nextLine();
-                    } catch (InputMismatchException e) {
+                    }
+                    catch (InputMismatchException e) {
                         System.out.println(" Stock must be a whole number.");
                         return;
                     }
@@ -84,7 +86,8 @@ public class CampusTreeManagement {
                         System.out.print("Price per kg (Rs): ");
                         price =sc.nextDouble();
                         sc.nextLine();
-                    } catch (InputMismatchException e) {
+                    }
+                    catch (InputMismatchException e) {
                         System.out.println("  Price must be a number.");
                         return;
                     }
@@ -96,11 +99,11 @@ public class CampusTreeManagement {
                         System.out.print("Harvest end   month (1-12): ");
                         hEnd   =sc.nextInt();
                         sc.nextLine();
-                    } catch (InputMismatchException e) {
+                    }
+                    catch (InputMismatchException e) {
                         System.out.println("Month must be a whole number.");
                         return;
                     }
-
                     mgr.addTree(new FruitBearingPlant(
                             name, location, age, height,
                             species, potted,
@@ -110,24 +113,22 @@ public class CampusTreeManagement {
                 case 2: {
                     System.out.print("Species          : ");
                     String species = sc.nextLine();
-
                     System.out.print(" Potted? (y/n) : ");
                     String pot = sc.nextLine();
                     boolean potted = false;
                     if(pot.equals("y")|| pot.equals("Y"))
                     {
                         potted=true;
-                    }    
-
+                    }
                     System.out.print("  Flower name      : ");
                     String flowerName = sc.nextLine();
-
                     int stockBunches;
                     try {
                         System.out.print("Initial stock (bunches): ");
                         stockBunches =sc.nextInt();
                         sc.nextLine();
-                    } catch (InputMismatchException e) {
+                    }
+                    catch (InputMismatchException e) {
                         System.out.println("Stock must be a whole number.");
                         return;
                     }
@@ -137,56 +138,53 @@ public class CampusTreeManagement {
                         System.out.print("Price per bunch (Rs): ");
                         price =sc.nextDouble();
                         sc.nextLine();
-                    } catch (InputMismatchException e) {
+                    }
+                    catch (InputMismatchException e) {
                         System.out.println("Price must be a number.");
                         return;
                     }
-
                     System.out.print("Bloom season     : ");
                     String season = sc.nextLine();
-
                     mgr.addTree(new FlowerBearingPlant(
                             name, location, age, height,
                             species, potted,
                             flowerName, stockBunches, price, season));
                     break;
                 }
-
                 case 3: {
                     double canopy;
                     try {
                         System.out.print("  Canopy spread (m): ");
                         canopy =sc.nextDouble();
-                    } catch (InputMismatchException e) {
+                    }
+                    catch (InputMismatchException e) {
                         System.out.println("Canopy must be a number.");
                         return;
                     }
                     System.out.print("Root type: ");
                     String rootType = sc.nextLine();
-
                     System.out.print("Fruit name: ");
                     String fruitName = sc.nextLine();
-
                     int stockKg;
                     try {
                         System.out.print("Initial stock (kg): ");
                         stockKg = sc.nextInt();
                         sc.nextLine();
-                    } catch (InputMismatchException e) {
+                    }
+                    catch (InputMismatchException e) {
                         System.out.println("Stock must be a whole number.");
                         return;
                     }
-
                     double price;
                     try {
                         System.out.print("Price per kg (Rs): ");
                         price =sc.nextDouble();
                         sc.nextLine();
-                    } catch (InputMismatchException e) {
+                    }
+                    catch (InputMismatchException e) {
                         System.out.println(" Price must be a number.");
                         return;
                     }
-
                     mgr.addTree(new FruitBearingTree(
                             name, location, age, height,
                             canopy, rootType,
@@ -200,11 +198,11 @@ public class CampusTreeManagement {
                         System.out.print("Canopy spread (m): ");
                         canopy =sc.nextDouble();
                         sc.nextLine();
-                    } catch (InputMismatchException e) {
+                    }
+                    catch (InputMismatchException e) {
                         System.out.println("Canopy must be a number.");
                         return;
                     }
-
                     System.out.print("Root type: ");
                     String rootType = sc.nextLine();
 
@@ -216,7 +214,8 @@ public class CampusTreeManagement {
                         System.out.print("Initial stock (garlands): ");
                         stockGarlands = sc.nextInt();
                         sc.nextLine();
-                    } catch (InputMismatchException e) {
+                    }
+                    catch (InputMismatchException e) {
                         System.out.println("Stock must be a whole number.");
                         return;
                     }
@@ -225,7 +224,8 @@ public class CampusTreeManagement {
                     try {
                         System.out.print("Price per garland (Rs): ");
                         price = sc.nextDouble();
-                    } catch (InputMismatchException e) {
+                    }
+                    catch (InputMismatchException e) {
                         System.out.println("Price must be a number.");
                         return;
                     }
@@ -243,7 +243,8 @@ public class CampusTreeManagement {
                         System.out.print("Canopy spread (m): ");
                         canopy = sc.nextDouble();
                         sc.nextLine();
-                    } catch (InputMismatchException e) {
+                    }
+                    catch (InputMismatchException e) {
                         System.out.println("Canopy must be a number.");
                         return;
                     }
@@ -259,7 +260,8 @@ public class CampusTreeManagement {
                         System.out.print("Benches nearby:");
                         benches =sc.nextInt();
                         sc.nextLine();
-                    } catch (InputMismatchException e) {
+                    }
+                    catch (InputMismatchException e) {
                         System.out.println("Benches must be a whole number.");
                         return;
                     }
@@ -277,11 +279,11 @@ public class CampusTreeManagement {
                         System.out.print("Canopy spread (m): ");
                         canopy = sc.nextDouble();
                         sc.nextLine();
-                    } catch (InputMismatchException e) {
+                    }
+                    catch (InputMismatchException e) {
                         System.out.println("Canopy must be a number.");
                         return;
                     }
-
                     System.out.print("Root type: ");
                     String rootType = sc.nextLine();
 
@@ -294,7 +296,8 @@ public class CampusTreeManagement {
                             System.out.println("Must have at least 1 use.");
                             return;
                         }
-                    } catch (NumberFormatException e) {
+                    }
+                    catch (InputMismatchException e) {
                         System.out.println(" Must be a whole number.");
                         return;
                     }
@@ -409,7 +412,8 @@ public class CampusTreeManagement {
             try {
                 choice = sc.nextInt();
                 sc.nextLine();
-            } catch (InputMismatchException e) {
+            }
+            catch (InputMismatchException e) {
                 System.out.println(" Invalid input – enter a number from the menu.");
                 continue;
             }
@@ -426,9 +430,11 @@ public class CampusTreeManagement {
                         Tree t = mgr.findTreeById(id);
                         System.out.println();
                         t.displayInfo();
-                    } catch (InputMismatchException e) {
+                    }
+                    catch (InputMismatchException e) {
                         System.out.println("Invalid ID.");
-                    } catch (TreeNotFoundException e) {
+                    }
+                    catch (TreeNotFoundException e) {
                         System.out.println(e.getMessage());
                     }
                     break;
@@ -457,7 +463,8 @@ public class CampusTreeManagement {
                         int qty = sc.nextInt();
                         sc.nextLine();
                         mgr.sellFromTree(id, qty);
-                    } catch (InputMismatchException e) {
+                    }
+                    catch (InputMismatchException e) {
                         System.out.println("Invalid number.");
                     }
                     break;
@@ -472,7 +479,8 @@ public class CampusTreeManagement {
                         int kg  = sc.nextInt();
                         sc.nextLine();
                         mgr.harvestFromTree(id, kg);
-                    } catch (InputMismatchException e) {
+                    }
+                    catch (InputMismatchException e) {
                         System.out.println("Invalid number.");
                     }
                     break;
@@ -487,7 +495,8 @@ public class CampusTreeManagement {
                         double liters = sc.nextDouble();
                         sc.nextLine();
                         mgr.getWaterSystem().refillReservoir(liters);
-                    } catch (InputMismatchException e) {
+                    }
+                    catch (InputMismatchException e) {
                         System.out.println(" Invalid amount.");
                     }
                     break;
@@ -505,8 +514,7 @@ public class CampusTreeManagement {
                     break;
 
                 case 13:
-                    System.out.println("\n  Exiting... Total trees ever registered: "
-                            + Tree.getTotalCreated());
+                    System.out.println("\n  Exiting... Total trees ever registered: " + Tree.getTotalCreated());
                     System.out.println("  Goodbye!\n");
                     running = false;
                     break;

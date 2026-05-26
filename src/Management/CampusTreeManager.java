@@ -1,7 +1,7 @@
 package Management;
 import Flora.Tree; 
-import Management.InsufficientWaterException;
-public class CampusTreeManager {
+public class CampusTreeManager
+{
     private final String campusName;
     private final Tree[] trees;
     private int count;
@@ -12,7 +12,6 @@ public class CampusTreeManager {
         this.count=0;
         this.waterSystem=ws;
     }
-
     public void addTree(Tree t) {
         if (count>=trees.length) {
             System.out.println("Campus tree capacity reached. Cannot add " + t.getName());
@@ -21,27 +20,23 @@ public class CampusTreeManager {
         trees[count++] = t;
         System.out.println("Registered: " +t.getName()+" (ID: " + t.getTreeId() + ")  Type: " + t.getTreeType());
     }
-
     public Tree findTreeById(int id) throws TreeNotFoundException {
-        for (int i = 0; i < count; i++)
-            if (trees[i].getTreeId() == id) 
+        for (int i = 0; i < count; i++) {
+            if (trees[i].getTreeId() == id)
                 return trees[i];
+        }
         throw new TreeNotFoundException("No tree found with ID " + id + ".");
     }
-
     public void listAllTrees() {
         System.out.println("\n|────|──────────────────────|──────────────────────────|────────────────────|");
         System.out.println("│ ID │ Name                 │ Type                     │ Location           │");
         System.out.println("├────┼──────────────────────┼──────────────────────────┼────────────────────┤");
-        for (int i = 0; i < count; i++)
-System.out.println("│ " + trees[i].getTreeId() + " │ " 
-        + trees[i].getName() + " │ " 
-        + trees[i].getTreeType() + " │ " 
-        + trees[i].getLocation() + " │");
+        for (int i = 0; i < count; i++) {
+            System.out.println("│ " + trees[i].getTreeId() + " │ " + trees[i].getName() + " │ " + trees[i].getTreeType() + " │ " + trees[i].getLocation() + " │");
+        }
         System.out.println("|────|──────────────────────|──────────────────────────|────────────────────|");
         System.out.println("Total trees on campus: " + count);
     }
-
     public void listAllTrees(String filterType) {
         System.out.println("\n  Trees matching type: \"" + filterType + "\"");
         boolean found = false;
@@ -76,7 +71,8 @@ System.out.println("│ " + trees[i].getTreeId() + " │ "
     public void waterAllTrees() {
         System.out.println("\n  --- Watering all trees ---");
         for (int i = 0; i < count; i++) {
-            try {
+            try
+            {
                 waterSystem.waterTree(trees[i]);
             } 
             catch (InsufficientWaterException e) {
@@ -84,22 +80,23 @@ System.out.println("│ " + trees[i].getTreeId() + " │ "
             }
         }
     }
-
     public void sellFromTree(int treeId, int quantity) {
-        try {
+        try
+        {
             Tree t = findTreeById(treeId);
             t.sell(quantity);
-        } catch (TreeNotFoundException | InvalidSaleException e) {
-            System.out.println("  [Sale Error] " + e.getMessage());
+        }
+        catch (TreeNotFoundException | InvalidSaleException e) {
+            System.out.println("[Sale Error]" + e.getMessage());
         }
     }
-
     public void harvestFromTree(int treeId, int amount) {
         try {
             Tree t = findTreeById(treeId);
             t.harvest(amount); 
-        } catch (TreeNotFoundException | InvalidHarvestException e) {
-            System.out.println("  [Harvest Error] " + e.getMessage());
+        }
+        catch (TreeNotFoundException | InvalidHarvestException e) {
+            System.out.println("[Harvest Error]" + e.getMessage());
         }
     }
 
@@ -113,17 +110,14 @@ System.out.println("│ " + trees[i].getTreeId() + " │ "
 
     public void displaySalesInventory() {
         System.out.println("\n  ====== Sellable Produce Inventory ======");
-        System.out.printf("  %-4s %-20s %-22s %8s %12s%n",
-                "ID", "Tree Name", "Product", "Stock", "Price (Rs)");
+        System.out.println("  ID   Tree Name            Product                   Stock   Price (Rs)");
         System.out.println("  " + "─".repeat(70));
         for (int i = 0; i < count; i++) {
             if (trees[i].isSellable()) {
-                System.out.printf("  %-4d %-20s %-22s %8d %12.2f%n",
-                        trees[i].getTreeId(), trees[i].getName(),
-                        trees[i].getProductName(), trees[i].getAvailableStock(), trees[i].getSalePrice());
-            }
+                System.out.println("  " + trees[i].getTreeId() + " " + trees[i].getName() + " " + trees[i].getProductName() + " " + trees[i].getAvailableStock() + " " + trees[i].getSalePrice());
             }
         }
+    }
     public int    getCount()      { return count; }
     public String getCampusName() { return campusName; }
     public WaterTreatmentSystem getWaterSystem() { return waterSystem; }
