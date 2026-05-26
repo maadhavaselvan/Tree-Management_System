@@ -12,29 +12,32 @@ public class LargeTree extends Tree {
         this.canopySpreadMeters = canopy;
         this.rootType = rootType;
     }
-
+    @Override
     public String getTreeType()
     { 
         return "Large Tree"; 
     }
+    @Override
     public double estimatedGrowthPerYear()
     { 
         return 1.2; 
     }
+    @Override
     public double getWaterFrequencyDays() 
     { 
         return 7.0; 
     }
+    @Override
     public double getWaterRequirementLiters() 
     { 
         return 20.0; 
     }
-
+    @Override
     public String getCareInstructions() 
     {
         return "Deep-water weekly; prune annually; inspect for pests monthly.";
     }
-
+    @Override
     public void water(double liters) throws InsufficientWaterException {
         if (liters <= 0)
             throw new InsufficientWaterException("Water must be positive.");
@@ -43,19 +46,19 @@ public class LargeTree extends Tree {
         totalWaterGiven += liters;
         System.out.println("  Watered " + getName() + " (Large) with " + liters + " L.");
     }
-
+    @Override
     public String getWaterStatus() 
     { 
         return "Total water supplied: " + totalWaterGiven + " L"; 
     }
-
+    @Override
     public void displayInfo() {
         super.displayInfo();
         System.out.println("  Canopy    : " + canopySpreadMeters + " m spread");
         System.out.println("  Root type : " + rootType);
         System.out.println("  " + getWaterStatus());
     }
-
+    
     public void displayInfo(boolean showGrowth) {
         displayInfo();
         if (showGrowth)
