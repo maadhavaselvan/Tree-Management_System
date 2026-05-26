@@ -16,25 +16,31 @@ public class FlowerBearingPlant extends Plant implements Sellable {
         this.pricePerBunch = pricePerBunch;
         this.bloomSeason = bloomSeason;
     }
+    @Override
     public String getTreeType()
     { 
         return "Flower-Bearing Plant"; 
     }
+    @Override
     public double getSalePrice()
     { 
         return pricePerBunch; 
     }
+    @Override
     public String getProductName()
     { 
         return flowerName; 
     }
+    @Override
     public int getAvailableStock()
     { 
         return stockBunches; 
     }
+    @Override
     public String getCareInstructions() {
         return "Water daily; add compost weekly. Peak bloom: " + bloomSeason + ".";
     }
+    @Override
     public void sell(int qty) throws InvalidSaleException {
         if (qty <= 0) 
             throw new InvalidSaleException("Quantity must be > 0.");
@@ -47,6 +53,7 @@ public class FlowerBearingPlant extends Plant implements Sellable {
         stockBunches += bunches;
         System.out.println("  " + flowerName + " bloomed! +" + bunches + " bunches. Stock: " + stockBunches + ".");
     }
+    @Override
     public void displayInfo() {
         super.displayInfo();
         System.out.println("  Flower : " + flowerName + "  Stock: " + stockBunches + " bunches  Price: Rs " + pricePerBunch + "/bunch");
