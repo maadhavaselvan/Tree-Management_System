@@ -1,4 +1,7 @@
 package Management;
 public class TreeNotFoundException extends Exception {
-    public TreeNotFoundException(String msg)      { super(msg); }
+    public TreeNotFoundException(String msg)
+    {
+        super(msg);
+    }
 }
