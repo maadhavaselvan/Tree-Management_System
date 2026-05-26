@@ -1,18 +1,18 @@
 package Management;
-import Flora.Tree; 
+import Flora.Flora;
 public class CampusTreeManager
 {
     private final String campusName;
-    private final Tree[] trees;
+    private final Flora[] trees;
     private int count;
     private final WaterTreatmentSystem waterSystem;
     public CampusTreeManager(String campusName, int capacity, WaterTreatmentSystem ws) {
         this.campusName=campusName;
-        this.trees=new Tree[capacity];
+        this.trees=new Flora[capacity];
         this.count=0;
         this.waterSystem=ws;
     }
-    public void addTree(Tree t) {
+    public void addTree(Flora t) {
         if (count>=trees.length) {
             System.out.println("Campus tree capacity reached. Cannot add " + t.getName());
             return;
@@ -20,7 +20,7 @@ public class CampusTreeManager
         trees[count++] = t;
         System.out.println("Registered: " +t.getName()+" (ID: " + t.getTreeId() + ")  Type: " + t.getTreeType());
     }
-    public Tree findTreeById(int id) throws TreeNotFoundException {
+    public Flora findTreeById(int id) throws TreeNotFoundException {
         for (int i = 0; i < count; i++) {
             if (trees[i].getTreeId() == id)
                 return trees[i];
@@ -83,7 +83,7 @@ public class CampusTreeManager
     public void sellFromTree(int treeId, int quantity) {
         try
         {
-            Tree t = findTreeById(treeId);
+            Flora t = findTreeById(treeId);
             t.sell(quantity);
         }
         catch (TreeNotFoundException | InvalidSaleException e) {
@@ -92,7 +92,7 @@ public class CampusTreeManager
     }
     public void harvestFromTree(int treeId, int amount) {
         try {
-            Tree t = findTreeById(treeId);
+            Flora t = findTreeById(treeId);
             t.harvest(amount); 
         }
         catch (TreeNotFoundException | InvalidHarvestException e) {

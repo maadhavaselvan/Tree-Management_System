@@ -1,7 +1,7 @@
 package Flora.Plant;
-import Flora.Tree; 
+import Flora.Flora;
 import Management.InsufficientWaterException;
-public class Plant extends Tree {
+public class Plant extends Flora {
 
     private final String  species;
     private final boolean isPotted;

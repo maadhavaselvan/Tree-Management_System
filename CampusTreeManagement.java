@@ -6,6 +6,35 @@ import Management.*;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 public class CampusTreeManagement {
+    private static int readInt(Scanner sc, String prompt)
+    {
+        while (true) {
+            System.out.print(prompt);
+            try {
+                int value = sc.nextInt(); sc.nextLine();
+                return value;
+            }
+            catch (InputMismatchException e) {
+                System.out.println("Invalid input. Enter a whole number.");
+                sc.nextLine();
+            }
+        }
+    }
+
+    private static double readDouble(Scanner sc, String prompt)
+    {
+        while (true) {
+            System.out.print(prompt);
+            try {
+                double val = sc.nextDouble(); sc.nextLine();
+                return val;
+            }
+            catch (InputMismatchException e) {
+                System.out.println("Invalid input. Enter a number.");
+                sc.nextLine();
+            }
+        }
+    }
     private static void addTreeInteractively(Scanner sc, CampusTreeManager mgr)
     {
         System.out.println("           ADD A NEW TREE");
@@ -36,30 +65,8 @@ public class CampusTreeManagement {
         System.out.print("Location / zone: ");
         String location = sc.nextLine().trim();
 
-        int age;
-        try {
-            System.out.print("Age (years): ");
-            age = sc.nextInt();
-            sc.nextLine();
-        }
-        catch (InputMismatchException e) {
-            System.out.println(" Age must be a whole number.");
-            sc.nextLine();
-            return;
-        }
-
-        double height;
-        try {
-            System.out.print("  Height (metres)  : ");
-            height =sc.nextDouble();
-            sc.nextLine();
-        }
-        catch (InputMismatchException e) {
-            System.out.println(" Height must be a number.");
-            sc.nextLine();
-            return;
-        }
-
+        int age=readInt(sc,"Enter the age");
+        double height=readDouble(sc,"Enter your Height(meters)");
         try {
             switch (type) {
                 case 1: {
@@ -74,42 +81,10 @@ public class CampusTreeManagement {
                     }    
                     System.out.print("Fruit name: ");
                     String fruitName = sc.nextLine();
-                    int stockKg;
-                    try {
-                        System.out.print("  Initial stock (kg): ");
-                        stockKg =  sc.nextInt();
-                        sc.nextLine();
-                    }
-                    catch (InputMismatchException e) {
-                        System.out.println(" Stock must be a whole number.");
-                        sc.nextLine();
-                        return;
-                    }
-                    double price;
-                    try {
-                        System.out.print("Price per kg (Rs): ");
-                        price =sc.nextDouble();
-                        sc.nextLine();
-                    }
-                    catch (InputMismatchException e) {
-                        System.out.println("  Price must be a number.");
-                        sc.nextLine();
-                        return;
-                    }
-                    int hStart, hEnd;
-                    try {
-                        System.out.print("Harvest start month (1-12): ");
-                        hStart = sc.nextInt();
-                        sc.nextLine();
-                        System.out.print("Harvest end   month (1-12): ");
-                        hEnd   =sc.nextInt();
-                        sc.nextLine();
-                    }
-                    catch (InputMismatchException e) {
-                        System.out.println("Month must be a whole number.");
-                        sc.nextLine();
-                        return;
-                    }
+                    int stockKg=readInt(sc,"Enter stock in Kg");
+                    double price=readDouble(sc,"Price per kg (Rs): ");
+                    int hStart=readInt(sc,"Harvest start month (1-12): ");
+                    int hEnd=readInt(sc,"Harvest end month (1-12): ");
                     mgr.addTree(new FruitBearingPlant(
                             name, location, age, height,
                             species, potted,
@@ -117,40 +92,19 @@ public class CampusTreeManagement {
                     break;
                 }
                 case 2: {
-                    System.out.print("Species          : ");
+                    System.out.print("Species: ");
                     String species = sc.nextLine();
-                    System.out.print(" Potted? (y/n) : ");
+                    System.out.print("Potted? (y/n): ");
                     String pot = sc.nextLine();
                     boolean potted = false;
                     if(pot.equals("y")|| pot.equals("Y"))
                     {
                         potted=true;
                     }
-                    System.out.print("  Flower name      : ");
+                    System.out.print("Flower name      : ");
                     String flowerName = sc.nextLine();
-                    int stockBunches;
-                    try {
-                        System.out.print("Initial stock (bunches): ");
-                        stockBunches =sc.nextInt();
-                        sc.nextLine();
-                    }
-                    catch (InputMismatchException e) {
-                        System.out.println("Stock must be a whole number.");
-                        sc.nextLine();
-                        return;
-                    }
-
-                    double price;
-                    try {
-                        System.out.print("Price per bunch (Rs): ");
-                        price =sc.nextDouble();
-                        sc.nextLine();
-                    }
-                    catch (InputMismatchException e) {
-                        System.out.println("Price must be a number.");
-                        sc.nextLine();
-                        return;
-                    }
+                    int stockBunches=readInt(sc,"Initial stock (bunches): ");
+                    double price=readDouble(sc,"Price per bunch (Rs): ");
                     System.out.print("Bloom season     : ");
                     String season = sc.nextLine();
                     mgr.addTree(new FlowerBearingPlant(
@@ -160,43 +114,13 @@ public class CampusTreeManagement {
                     break;
                 }
                 case 3: {
-                    double canopy;
-                    try {
-                        System.out.print("Canopy spread (m): ");
-                        canopy =sc.nextDouble();
-                        sc.nextLine()
-                    }
-                    catch (InputMismatchException e) {
-                        System.out.println("Canopy must be a number.");
-                        sc.nextLine();
-                        return;
-                    }
+                    double canopy=readDouble(sc,"Canopy spread (m): ");
                     System.out.print("Root type: ");
                     String rootType = sc.nextLine();
                     System.out.print("Fruit name: ");
                     String fruitName = sc.nextLine();
-                    int stockKg;
-                    try {
-                        System.out.print("Initial stock (kg): ");
-                        stockKg = sc.nextInt();
-                        sc.nextLine();
-                    }
-                    catch (InputMismatchException e) {
-                        System.out.println("Stock must be a whole number.");
-                        sc.nextLine();
-                        return;
-                    }
-                    double price;
-                    try {
-                        System.out.print("Price per kg (Rs): ");
-                        price =sc.nextDouble();
-                        sc.nextLine();
-                    }
-                    catch (InputMismatchException e) {
-                        System.out.println(" Price must be a number.");
-                        sc.nextLine();
-                        return;
-                    }
+                    int stockKg=readInt(sc,"Initial stock (kg): ");
+                    double price=readDouble(sc,"Price per kg (Rs): ");
                     mgr.addTree(new FruitBearingTree(
                             name, location, age, height,
                             canopy, rootType,
@@ -205,46 +129,14 @@ public class CampusTreeManagement {
                 }
 
                 case 4: {
-                    double canopy;
-                    try {
-                        System.out.print("Canopy spread (m): ");
-                        canopy =sc.nextDouble();
-                        sc.nextLine();
-                    }
-                    catch (InputMismatchException e) {
-                        System.out.println("Canopy must be a number.");
-                        sc.nextLine();
-                        return;
-                    }
+                    double canopy=readDouble(sc,"Canopy spread (m): ");
                     System.out.print("Root type: ");
                     String rootType = sc.nextLine();
-
                     System.out.print("Flower/garland name: ");
                     String flowerName = sc.nextLine();
 
-                    int stockGarlands;
-                    try {
-                        System.out.print("Initial stock (garlands): ");
-                        stockGarlands = sc.nextInt();
-                        sc.nextLine();
-                    }
-                    catch (InputMismatchException e) {
-                        System.out.println("Stock must be a whole number.");
-                        sc.nextLine();
-                        return;
-                    }
-
-                    double price;
-                    try {
-                        System.out.print("Price per garland (Rs): ");
-                        price = sc.nextDouble();
-                    }
-                    catch (InputMismatchException e) {
-                        System.out.println("Price must be a number.");
-                        sc.nextLine();
-                        return;
-                    }
-
+                    int stockGarlands=readInt(sc,"Initial stock (garlands): ");
+                    double price=readDouble(sc,"Price per garland (Rs): ");
                     mgr.addTree(new FlowerBearingTree(
                             name, location, age, height,
                             canopy, rootType,
@@ -253,35 +145,14 @@ public class CampusTreeManagement {
                 }
 
                 case 5: {
-                    double canopy;
-                    try {
-                        System.out.print("Canopy spread (m): ");
-                        canopy = sc.nextDouble();
-                        sc.nextLine();
-                    }
-                    catch (InputMismatchException e) {
-                        System.out.println("Canopy must be a number.");
-                        sc.nextLine();
-                        return;
-                    }
-
+                    double canopy=readDouble(sc,"Canopy spread (m): ");
                     System.out.print("Root type: ");
                     String rootType = sc.nextLine();
 
                     System.out.print("Area it shades: ");
                     String beneficiary = sc.nextLine();
 
-                    int benches;
-                    try {
-                        System.out.print("Benches nearby:");
-                        benches =sc.nextInt();
-                        sc.nextLine();
-                    }
-                    catch (InputMismatchException e) {
-                        System.out.println("Benches must be a whole number.");
-                        sc.nextLine();
-                        return;
-                    }
+                    int benches=readInt(sc,"Benches nearby:");
 
                     mgr.addTree(new ShadeTree(
                             name, location, age, height,
@@ -291,35 +162,11 @@ public class CampusTreeManagement {
                 }
 
                 case 6: {
-                    double canopy;
-                    try {
-                        System.out.print("Canopy spread (m): ");
-                        canopy = sc.nextDouble();
-                        sc.nextLine();
-                    }
-                    catch (InputMismatchException e) {
-                        System.out.println("Canopy must be a number.");
-                        sc.nextLine();
-                        return;
-                    }
+                    double canopy=readDouble(sc,"Canopy spread (m): ");
                     System.out.print("Root type: ");
                     String rootType = sc.nextLine();
 
-                    int numUses;
-                    try {
-                        System.out.print("Number of medicinal uses: ");
-                        numUses = sc.nextInt();
-                        sc.nextLine();
-                        if (numUses < 1) {
-                            System.out.println("Must have at least 1 use.");
-                            return;
-                        }
-                    }
-                    catch (InputMismatchException e) {
-                        System.out.println(" Must be a whole number.");
-                        sc.nextLine();
-                        return;
-                    }
+                    int numUses=readInt(sc,"Number of medicinal uses: ");
 
                     String[] uses = new String[numUses];
                     for (int i = 0; i < numUses; i++) {
@@ -425,34 +272,19 @@ public class CampusTreeManagement {
             System.out.println(" 11. Full campus tree report");
             System.out.println(" 12. Add a new tree");
             System.out.println(" 13. Exit");
-            System.out.print("  Enter choice: ");
 
-            int choice = -1;
-            try {
-                choice = sc.nextInt();
-                sc.nextLine();
-            }
-            catch (InputMismatchException e) {
-                System.out.println(" Invalid input – enter a number from the menu.");
-                continue;
-            }
+            int choice = readInt(sc,"Enter choice: ");
 
             switch (choice) {
                 case 1:
                     mgr.listAllTrees();
                     break;
                 case 2:
-                    System.out.print("  Enter Tree ID: ");
+                    int id=readInt(sc,"Enter Tree ID: ");
                     try {
-                        int id = sc.nextInt();
-                        sc.nextLine();
-                        Tree t = mgr.findTreeById(id);
+                        Flora t = mgr.findTreeById(id);
                         System.out.println();
                         t.displayInfo();
-                    }
-                    catch (InputMismatchException e) {
-                        System.out.println("Invalid ID.");
-                        sc.nextLine();
                     }
                     catch (TreeNotFoundException e) {
                         System.out.println(e.getMessage());
@@ -475,36 +307,17 @@ public class CampusTreeManagement {
 
                 case 6:
                     mgr.displaySalesInventory();
-                    System.out.print("  Enter Tree ID to sell from: ");
-                    try {
-                        int id  = sc.nextInt();
-                        sc.nextLine();
-                        System.out.print("Enter quantity: ");
-                        int qty = sc.nextInt();
-                        sc.nextLine();
-                        mgr.sellFromTree(id, qty);
-                    }
-                    catch (InputMismatchException e) {
-                        System.out.println("Invalid number.");
-                        sc.nextLine();
-                    }
+                    id=readInt(sc,"Enter Tree ID to sell from: ");
+                    System.out.print("Enter quantity: ");
+                    int qty = readInt(sc,"Enter quantity: ");
+                    mgr.sellFromTree(id, qty);
                     break;
 
                 case 7:
                     mgr.listAllTrees("Fruit");
-                    System.out.print("  Enter Fruit Tree ID: ");
-                    try {
-                        int id  = sc.nextInt();
-                        sc.nextLine();
-                        System.out.print("Enter kg to harvest: ");
-                        int kg  = sc.nextInt();
-                        sc.nextLine();
-                        mgr.harvestFromTree(id, kg);
-                    }
-                    catch (InputMismatchException e) {
-                        System.out.println("Invalid number.");
-                        sc.nextLine();
-                    }
+                    id=readInt(sc,"Enter Fruit Tree ID: ");
+                    int kg  = readInt(sc,"Enter kg to harvest: ");
+                    mgr.harvestFromTree(id, kg);
                     break;
 
                 case 8:
@@ -512,16 +325,8 @@ public class CampusTreeManagement {
                     break;
 
                 case 9:
-                    System.out.print("Enter litres to add to reservoir: ");
-                    try {
-                        double liters = sc.nextDouble();
-                        sc.nextLine();
-                        mgr.getWaterSystem().refillReservoir(liters);
-                    }
-                    catch (InputMismatchException e) {
-                        System.out.println(" Invalid amount.");
-                        sc.nextLine();
-                    }
+                    double liters=readDouble(sc,"Enter litres to add to reservoir: ");
+                    mgr.getWaterSystem().refillReservoir(liters);
                     break;
 
                 case 10:
@@ -537,8 +342,8 @@ public class CampusTreeManagement {
                     break;
 
                 case 13:
-                    System.out.println("\n  Exiting... Total trees ever registered: " + Tree.getTotalCreated());
-                    System.out.println("  Goodbye!\n");
+                    System.out.println("\nExiting... Total trees ever registered: " + Flora.getTotalCreated());
+                    System.out.println("Goodbye!\n");
                     running = false;
                     break;
 

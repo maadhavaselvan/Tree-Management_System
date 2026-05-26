@@ -1,5 +1,5 @@
 package Management;
-import Flora.Tree;
+import Flora.Flora;
 
 public class WaterTreatmentSystem {
 
@@ -17,7 +17,7 @@ public class WaterTreatmentSystem {
         this.zoneAllocationL    = allocations;
     }
 
-    public void waterTree(Tree tree) throws InsufficientWaterException {
+    public void waterTree(Flora tree) throws InsufficientWaterException {
         double needed = tree.getWaterRequirementLiters();
         checkSupply(tree.getName(), needed);
         tree.water(needed);

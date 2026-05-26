@@ -1,7 +1,7 @@
 package Flora.LargeTree;
-import Flora.Tree; 
+import Flora.Flora;
 import Management.InsufficientWaterException;
-public class LargeTree extends Tree {
+public class LargeTree extends Flora {
 
     private final double canopySpreadMeters;
     private final String rootType;
