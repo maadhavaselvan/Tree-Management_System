@@ -164,6 +164,7 @@ public class CampusTreeManagement {
                     try {
                         System.out.print("Canopy spread (m): ");
                         canopy =sc.nextDouble();
+                        sc.nextLine()
                     }
                     catch (InputMismatchException e) {
                         System.out.println("Canopy must be a number.");
