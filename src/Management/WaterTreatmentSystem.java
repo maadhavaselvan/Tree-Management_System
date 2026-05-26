@@ -25,25 +25,6 @@ public class WaterTreatmentSystem {
         usedTodayL  += needed;
     }
 
-    public void waterTree(Tree tree, double extraLiters) throws InsufficientWaterException {
-        double total = tree.getWaterRequirementLiters() + extraLiters;
-        checkSupply(tree.getName(), total);
-        tree.water(total);
-        availableL -= total;
-        usedTodayL += total;
-    }
-
-    public void waterTree(Tree[] trees, int count, String treeName)
-            throws InsufficientWaterException, TreeNotFoundException {
-        for (int i = 0; i < count; i++) {
-            if (trees[i].getName().equals(treeName)) {
-                waterTree(trees[i]);
-                return;
-            }
-        }
-        throw new TreeNotFoundException("Tree '" + treeName + "' not found for watering.");
-    }
-
     private void checkSupply(String name, double needed) throws InsufficientWaterException {
         if (needed > availableL)
             throw new InsufficientWaterException("Reservoir low! Cannot water " + name + ". Need " + needed + " L, have " + availableL + " L.");
@@ -66,5 +47,4 @@ public class WaterTreatmentSystem {
         }
     }
 
-    public double getAvailableL() { return availableL; }
 }

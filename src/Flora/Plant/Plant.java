@@ -56,6 +56,5 @@ public class Plant extends Tree {
             System.out.println("  Maintenance cost: approx Rs 200/month");
     }
 
-    public String getSpecies()  { return species; }
-    public boolean isPotted()   { return isPotted; }
+
 }

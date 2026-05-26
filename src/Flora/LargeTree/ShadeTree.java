@@ -2,7 +2,7 @@ package Flora.LargeTree;
 public class ShadeTree extends LargeTree {
 
     private final String beneficiary;   
-    private final int    benchesNearby;
+    private final int benchesNearby;
     public ShadeTree(String name, String location, int age, double height,
                      double canopy, String rootType,
                      String beneficiary, int benchesNearby) {

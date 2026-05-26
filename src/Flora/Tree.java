@@ -1,8 +1,6 @@
 package Flora;
 import Management.Waterable;
 public abstract class Tree implements Waterable {
-
-    
     private final int    treeId;
     private  String name;
     private  String location;
@@ -50,14 +48,10 @@ public void harvest(int amount) throws Management.InvalidHarvestException {
     public int    getTreeId()                          { return treeId; }
     public String getName()                            { return name; }
     public String getLocation()                        { return location; }
-    public int    getAgeYears()                        { return ageYears; }
     public double getHeightMeters()                    { return heightMeters; }
 
     public void   setName(String n)                    { this.name = n; }
     public void   setLocation(String l)                { this.location = l; }
-    public void   setAgeYears(int a)                   { this.ageYears = a; }
-    public void   setHeightMeters(double h)            { this.heightMeters = h; }
 
     public static int  getTotalCreated()               { return idCounter; }
-    public static void resetIdCounter()                { idCounter = 0; }
 }

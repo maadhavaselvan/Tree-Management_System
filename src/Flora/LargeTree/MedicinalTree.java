@@ -2,7 +2,7 @@ package Flora.LargeTree;
 public class MedicinalTree extends LargeTree {
 
     private final String[] medicinalUses;
-    private final String   contactDept;   
+    private final String contactDept;
     public MedicinalTree(String name, String location, int age, double height,
                          double canopy, String rootType,
                          String[] medicinalUses, String contactDept) {

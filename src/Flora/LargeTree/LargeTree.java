@@ -5,7 +5,7 @@ public class LargeTree extends Tree {
 
     private final double canopySpreadMeters;
     private final String rootType;
-    private       double totalWaterGiven;
+    private double totalWaterGiven;
 
     public LargeTree(String name, String location, int age, double height,
                      double canopy, String rootType) {

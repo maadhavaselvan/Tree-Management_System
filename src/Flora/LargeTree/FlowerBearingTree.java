@@ -4,7 +4,7 @@ import Management.InvalidSaleException;
 public class FlowerBearingTree extends LargeTree implements Sellable {
 
     private final String flowerName;
-    private       int    stockGarlands;
+    private int stockGarlands;
     private final double pricePerGarland;
 
     public FlowerBearingTree(String name, String location, int age, double height,

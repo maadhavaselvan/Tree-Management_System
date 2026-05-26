@@ -5,7 +5,7 @@ import Management.InvalidHarvestException;
 public class FruitBearingTree extends LargeTree implements Sellable {
 
     private final String fruitName;
-    private       int    stockKg;
+    private int stockKg;
     private final double pricePerKg;
 
     public FruitBearingTree(String name, String location, int age, double height,

@@ -27,6 +27,7 @@ public class CampusTreeManagement {
         }
         catch (InputMismatchException e) {
             System.out.println("Invalid input.");
+            sc.nextLine();
             return;
         }
 
@@ -43,6 +44,7 @@ public class CampusTreeManagement {
         }
         catch (InputMismatchException e) {
             System.out.println(" Age must be a whole number.");
+            sc.nextLine();
             return;
         }
 
@@ -54,6 +56,7 @@ public class CampusTreeManagement {
         }
         catch (InputMismatchException e) {
             System.out.println(" Height must be a number.");
+            sc.nextLine();
             return;
         }
 
@@ -79,6 +82,7 @@ public class CampusTreeManagement {
                     }
                     catch (InputMismatchException e) {
                         System.out.println(" Stock must be a whole number.");
+                        sc.nextLine();
                         return;
                     }
                     double price;
@@ -89,6 +93,7 @@ public class CampusTreeManagement {
                     }
                     catch (InputMismatchException e) {
                         System.out.println("  Price must be a number.");
+                        sc.nextLine();
                         return;
                     }
                     int hStart, hEnd;
@@ -102,6 +107,7 @@ public class CampusTreeManagement {
                     }
                     catch (InputMismatchException e) {
                         System.out.println("Month must be a whole number.");
+                        sc.nextLine();
                         return;
                     }
                     mgr.addTree(new FruitBearingPlant(
@@ -130,6 +136,7 @@ public class CampusTreeManagement {
                     }
                     catch (InputMismatchException e) {
                         System.out.println("Stock must be a whole number.");
+                        sc.nextLine();
                         return;
                     }
 
@@ -141,6 +148,7 @@ public class CampusTreeManagement {
                     }
                     catch (InputMismatchException e) {
                         System.out.println("Price must be a number.");
+                        sc.nextLine();
                         return;
                     }
                     System.out.print("Bloom season     : ");
@@ -154,11 +162,12 @@ public class CampusTreeManagement {
                 case 3: {
                     double canopy;
                     try {
-                        System.out.print("  Canopy spread (m): ");
+                        System.out.print("Canopy spread (m): ");
                         canopy =sc.nextDouble();
                     }
                     catch (InputMismatchException e) {
                         System.out.println("Canopy must be a number.");
+                        sc.nextLine();
                         return;
                     }
                     System.out.print("Root type: ");
@@ -173,6 +182,7 @@ public class CampusTreeManagement {
                     }
                     catch (InputMismatchException e) {
                         System.out.println("Stock must be a whole number.");
+                        sc.nextLine();
                         return;
                     }
                     double price;
@@ -183,6 +193,7 @@ public class CampusTreeManagement {
                     }
                     catch (InputMismatchException e) {
                         System.out.println(" Price must be a number.");
+                        sc.nextLine();
                         return;
                     }
                     mgr.addTree(new FruitBearingTree(
@@ -201,6 +212,7 @@ public class CampusTreeManagement {
                     }
                     catch (InputMismatchException e) {
                         System.out.println("Canopy must be a number.");
+                        sc.nextLine();
                         return;
                     }
                     System.out.print("Root type: ");
@@ -217,6 +229,7 @@ public class CampusTreeManagement {
                     }
                     catch (InputMismatchException e) {
                         System.out.println("Stock must be a whole number.");
+                        sc.nextLine();
                         return;
                     }
 
@@ -227,6 +240,7 @@ public class CampusTreeManagement {
                     }
                     catch (InputMismatchException e) {
                         System.out.println("Price must be a number.");
+                        sc.nextLine();
                         return;
                     }
 
@@ -246,6 +260,7 @@ public class CampusTreeManagement {
                     }
                     catch (InputMismatchException e) {
                         System.out.println("Canopy must be a number.");
+                        sc.nextLine();
                         return;
                     }
 
@@ -263,6 +278,7 @@ public class CampusTreeManagement {
                     }
                     catch (InputMismatchException e) {
                         System.out.println("Benches must be a whole number.");
+                        sc.nextLine();
                         return;
                     }
 
@@ -282,6 +298,7 @@ public class CampusTreeManagement {
                     }
                     catch (InputMismatchException e) {
                         System.out.println("Canopy must be a number.");
+                        sc.nextLine();
                         return;
                     }
                     System.out.print("Root type: ");
@@ -299,6 +316,7 @@ public class CampusTreeManagement {
                     }
                     catch (InputMismatchException e) {
                         System.out.println(" Must be a whole number.");
+                        sc.nextLine();
                         return;
                     }
 
@@ -433,6 +451,7 @@ public class CampusTreeManagement {
                     }
                     catch (InputMismatchException e) {
                         System.out.println("Invalid ID.");
+                        sc.nextLine();
                     }
                     catch (TreeNotFoundException e) {
                         System.out.println(e.getMessage());
@@ -466,6 +485,7 @@ public class CampusTreeManagement {
                     }
                     catch (InputMismatchException e) {
                         System.out.println("Invalid number.");
+                        sc.nextLine();
                     }
                     break;
 
@@ -482,6 +502,7 @@ public class CampusTreeManagement {
                     }
                     catch (InputMismatchException e) {
                         System.out.println("Invalid number.");
+                        sc.nextLine();
                     }
                     break;
 
@@ -498,6 +519,7 @@ public class CampusTreeManagement {
                     }
                     catch (InputMismatchException e) {
                         System.out.println(" Invalid amount.");
+                        sc.nextLine();
                     }
                     break;
 
