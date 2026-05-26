@@ -91,30 +91,16 @@ public class CampusTreeManagement {
         System.out.println("           ADD A NEW TREE");
         System.out.println("1. Fruit-Bearing Plant");
         System.out.println("2. Flower-Bearing Plant");
-        System.out.println("3. Fruit-Bearing Tree (large) ");
-        System.out.println("4. Flower-Bearing Tree (large)");
+        System.out.println("3. Fruit-Bearing Tree");
+        System.out.println("4. Flower-Bearing Tree");
         System.out.println("5. Shade Tree");
         System.out.println("6. Medicinal Tree");
-        System.out.print("Choose tree type (1-6) : ");
-        int type;
-        try {
-            type = sc.nextInt();
-            sc.nextLine();
-            if (type < 1 || type > 6) {
-                System.out.println("Invalid type. Choose 1–6.");
-                return;
-            }
-        }
-        catch (InputMismatchException e) {
-            System.out.println("Invalid input.");
-            sc.nextLine();
-            return;
-        }
+        int type=readInt(sc,"Choose tree type (1-6) : ");
         System.out.print("Tree name : ");
         String name = sc.nextLine();
         String location=locations(sc);
-        int age=readInt(sc,"Enter the age");
-        double height=readDouble(sc,"Enter your Height(meters)");
+        int age=readInt(sc,"Enter the age : ");
+        double height=readDouble(sc,"Enter your Height(meters) : ");
         try {
             switch (type) {
                 case 1: {
@@ -271,8 +257,20 @@ public class CampusTreeManagement {
                     break;
 
                 case 3:
-                    System.out.print("Enter type keyword (e.g. Fruit, Flower, Shade, Medicinal): ");
-                    mgr.listAllTrees(sc.nextLine());
+                    System.out.println("1. Fruit-Bearing Plant");
+                    System.out.println("2. Flower-Bearing Plant");
+                    System.out.println("3. Fruit-Bearing Tree ");
+                    System.out.println("4. Flower-Bearing Tree");
+                    System.out.println("5. Shade Tree");
+                    System.out.println("6. Medicinal Tree");
+                    int type;
+                    while (true) {
+                        type = readInt(sc, "Choose tree type (1-6) : ");
+                        if(type<=6 && type>=1)
+                            break;
+                        System.out.println("Enter a number between 1 and 6");
+                    }
+                    mgr.listAllTrees(type);
                     break;
 
                 case 4:

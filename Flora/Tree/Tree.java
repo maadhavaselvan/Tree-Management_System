@@ -11,7 +11,7 @@ public class Tree extends Flora {
     @Override
     public String getTreeType()
     {
-        return "Large Tree";
+        return "Tree";
     }
     @Override
     public double estimatedGrowthPerYear()

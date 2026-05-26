@@ -17,7 +17,7 @@ public class FruitBearingTree extends Tree implements Sellable {
     @Override
     public String getTreeType()
     {
-        return "Fruit-Bearing Large Tree";
+        return "Fruit-Bearing Tree";
     }
     @Override
     public double getSalePrice()

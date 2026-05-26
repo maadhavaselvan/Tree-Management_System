@@ -41,7 +41,42 @@ public class CampusTreeManager
         System.out.println("\nTrees matching type: \"" + filterType + "\"");
         boolean found = false;
         for (int i = 0; i < count; i++) {
-            if (trees[i].getTreeType().toLowerCase().equals(filterType.toLowerCase())) 
+            if (trees[i].getTreeType().toLowerCase().equals(filterType.toLowerCase()))
+            {
+                System.out.println("    [" + trees[i].getTreeId() + "] " + trees[i].getName() + " @ " + trees[i].getLocation());
+                found = true;
+            }
+        }
+        if (!found)
+            System.out.println("No trees matched.");
+    }
+    public void listAllTrees(int type) {
+        String filterType="";
+        switch (type)
+        {
+            case 1:
+                filterType="Fruit-Bearing Plant";
+                break;
+            case 2:
+                filterType="Flower-Bearing Plant";
+                break;
+            case 3:
+                filterType="Fruit-Bearing Tree";
+                break;
+            case 4:
+                filterType="Flower-Bearing Tree";
+                break;
+            case 5:
+                filterType="Shade Tree";
+                break;
+            case 6:
+                filterType="Medicinal Tree";
+                break;
+        }
+        System.out.println("\nTrees matching type: \"" + filterType + "\"");
+        boolean found = false;
+        for (int i = 0; i < count; i++) {
+            if (trees[i].getTreeType().equals(filterType) )
             {
                 System.out.println("    [" + trees[i].getTreeId() + "] " + trees[i].getName() + " @ " + trees[i].getLocation());
                 found = true;
