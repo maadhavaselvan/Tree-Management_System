@@ -26,6 +26,7 @@ public class FruitBearingPlant extends Plant implements Sellable {
     @Override public double getSalePrice()    { return pricePerKg; }
     @Override public String getProductName()  { return fruitName; }
     @Override public int    getAvailableStock(){ return stockKg; }
+    public boolean isSellable() { return true; }
 
     @Override
     public String getCareInstructions() {

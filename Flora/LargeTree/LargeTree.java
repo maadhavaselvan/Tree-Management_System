@@ -5,49 +5,38 @@ public class LargeTree extends Tree {
 
     private final double canopySpreadMeters;
     private final String rootType;
-    private double totalWaterGiven;
+    private       double totalWaterGiven;
 
-    public LargeTree(String name, String location, int age, double height, double canopy, String rootType) {
+    public LargeTree(String name, String location, int age, double height,
+                     double canopy, String rootType) {
         super(name, location, age, height);
         this.canopySpreadMeters = canopy;
-        this.rootType = rootType;
+        this.rootType           = rootType;
     }
 
-    public String getTreeType()
-    { 
-        return "Large Tree"; 
-    }
-    public double estimatedGrowthPerYear()
-    { 
-        return 1.2; 
-    }
-    public double getWaterFrequencyDays() 
-    { 
-        return 7.0; 
-    }
-    public double getWaterRequirementLiters() 
-    { 
-        return 20.0; 
-    }
+    @Override public String getTreeType()           { return "Large Tree"; }
+    @Override public double estimatedGrowthPerYear(){ return 1.2; }
+    @Override public double getWaterFrequencyDays() { return 7.0; }
+    @Override public double getWaterRequirementLiters() { return 20.0; }
 
-    public String getCareInstructions() 
-    {
+    @Override
+    public String getCareInstructions() {
         return "Deep-water weekly; prune annually; inspect for pests monthly.";
     }
 
+    @Override
     public void water(double liters) throws InsufficientWaterException {
         if (liters <= 0)
             throw new InsufficientWaterException("Water must be positive.");
         if (liters < getWaterRequirementLiters())
-            throw new InsufficientWaterException( getName() + " requires at least " + getWaterRequirementLiters() + " L.");
+            throw new InsufficientWaterException(
+                    getName() + " requires at least " + getWaterRequirementLiters() + " L.");
         totalWaterGiven += liters;
         System.out.println("  Watered " + getName() + " (Large) with " + liters + " L.");
     }
 
-    public String getWaterStatus() 
-    { 
-        return "Total water supplied: " + totalWaterGiven + " L"; 
-    }
+    @Override
+    public String getWaterStatus() { return "Total water supplied: " + totalWaterGiven + " L"; }
 
     public void displayInfo() {
         super.displayInfo();
@@ -59,15 +48,10 @@ public class LargeTree extends Tree {
     public void displayInfo(boolean showGrowth) {
         displayInfo();
         if (showGrowth)
-           System.out.println("  Projected height in 5 yrs: " + (getHeightMeters() + 5 * estimatedGrowthPerYear()) + " m");
+            System.out.printf("  Projected height in 5 yrs: %.1f m%n",
+                    getHeightMeters() + 5 * estimatedGrowthPerYear());
     }
 
-    public double getCanopySpread() 
-    { 
-        return canopySpreadMeters; 
-    }
-    public String getRootType() 
-    { 
-        return rootType; 
-    }
+    public double getCanopySpread() { return canopySpreadMeters; }
+    public String getRootType()     { return rootType; }
 }
