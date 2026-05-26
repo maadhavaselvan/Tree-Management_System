@@ -9,17 +9,21 @@ public class ShadeTree extends LargeTree {
         this.beneficiary = beneficiary;
         this.benchesNearby = benchesNearby;
     }
+     @Override
     public String getTreeType()
     { 
         return "Shade Tree"; 
     }
+     @Override
     public double estimatedGrowthPerYear()
     { 
         return 0.8; 
     }
+     @Override
     public String getCareInstructions() {
         return "Prune lower branches yearly; remove dead wood. Shades: " + beneficiary + ".";
     }
+     @Override
     public void displayInfo() {
         super.displayInfo();
         System.out.println("  Shades : " + beneficiary);
