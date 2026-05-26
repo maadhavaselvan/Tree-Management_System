@@ -86,17 +86,7 @@ public class CampusTreeManager
                 filterType="Medicinal Tree";
                 break;
         }
-        System.out.println("\nTrees matching type: \"" + filterType + "\"");
-        boolean found = false;
-        for (int i = 0; i < count; i++) {
-            if (trees[i].getTreeType().equals(filterType) )
-            {
-                System.out.println("    [" + trees[i].getTreeId() + "] " + trees[i].getName() + " @ " + trees[i].getLocation());
-                found = true;
-            }
-        }
-        if (!found) 
-            System.out.println("No trees matched.");
+        listAllTrees(filterType);
     }
     public void listAllTrees(String zone, boolean byLocation) {
         if (!byLocation) 
