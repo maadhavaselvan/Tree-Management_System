@@ -36,7 +36,7 @@ public class WaterTreatmentSystem {
     public void waterTree(Tree[] trees, int count, String treeName)
             throws InsufficientWaterException, TreeNotFoundException {
         for (int i = 0; i < count; i++) {
-            if (trees[i].getName().equalsIgnoreCase(treeName)) {
+            if (trees[i].getName().equals(treeName)) {
                 waterTree(trees[i]);
                 return;
             }
@@ -46,28 +46,24 @@ public class WaterTreatmentSystem {
 
     private void checkSupply(String name, double needed) throws InsufficientWaterException {
         if (needed > availableL)
-            throw new InsufficientWaterException(
-                    "Reservoir low! Cannot water " + name
-                    + ". Need " + needed + " L, have " + availableL + " L.");
+            throw new InsufficientWaterException("Reservoir low! Cannot water " + name + ". Need " + needed + " L, have " + availableL + " L.");
     }
 
     public void refillReservoir(double liters) {
         availableL = Math.min(availableL + liters, reservoirCapacityL);
-        System.out.printf("  Reservoir refilled by %.1f L. Now at %.1f / %.1f L.%n",
-                liters, availableL, reservoirCapacityL);
+        System.out.printf("  Reservoir refilled by %.1f L. Now at %.1f / %.1f L.%n", liters, availableL, reservoirCapacityL);
     }
 
     public void displayWaterReport() {
-        System.out.println("\n╔═══════════════════════════════════════╗");
-        System.out.println("║       WATER TREATMENT REPORT          ║");
-        System.out.println("╠═══════════════════════════════════════╣");
-        System.out.printf( "║  Reservoir Capacity : %8.1f L       ║%n", reservoirCapacityL);
-        System.out.printf( "║  Available          : %8.1f L       ║%n", availableL);
-        System.out.printf( "║  Used Today         : %8.1f L       ║%n", usedTodayL);
-        System.out.println("║  Zone Allocations:                    ║");
+        System.out.println("       WATER TREATMENT REPORT          ");
+        System.out.println("  Reservoir Capacity : " + reservoirCapacityL + " L");
+        System.out.println("  Available          : " + availableL + " L");
+        System.out.println("  Used Today         : " + usedTodayL + " L");
+        System.out.println("  Zone Allocations:                    ");
         for (int i = 0; i < zones.length; i++)
-            System.out.printf("║    %-18s : %6.1f L    ║%n", zones[i], zoneAllocationL[i]);
-        System.out.println("╚═══════════════════════════════════════╝");
+        {
+            System.out.println("    " + zones[i] + " : " + zoneAllocationL[i] + " L    ");
+        }
     }
 
     public double getAvailableL() { return availableL; }
