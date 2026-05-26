@@ -9,18 +9,21 @@ public class MedicinalTree extends LargeTree {
         this.medicinalUses = medicinalUses;
         this.contactDept = contactDept;
     }
-
+    @Override
     public String getTreeType()
     { 
         return "Medicinal Tree"; 
     }
+     @Override
     public double estimatedGrowthPerYear()
     { 
         return 0.9; 
     }
+     @Override
     public String getCareInstructions() {
         return "Organic care only; no pesticides. Contact " + contactDept + " before pruning.";
     }
+     @Override
     public void displayInfo() {
         super.displayInfo();
         System.out.print("  Uses  : ");

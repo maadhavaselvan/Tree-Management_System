@@ -15,24 +15,27 @@ public class FlowerBearingTree extends LargeTree implements Sellable {
         this.stockGarlands = stockGarlands;
         this.pricePerGarland = pricePerGarland;
     }
-
+    @Override
     public String getTreeType() 
     { 
         return "Flower-Bearing Large Tree"; 
     }
+    @Override
     public double getSalePrice() 
     { 
         return pricePerGarland; 
     }
+    @Override
     public String getProductName()
     { 
         return flowerName; 
     }
+    @Override
     public int getAvailableStock()
     { 
         return stockGarlands; 
     }
-
+    @Override
     public void sell(int qty) throws InvalidSaleException {
         if (qty <= 0) 
             throw new InvalidSaleException("Quantity must be > 0.");
@@ -42,7 +45,7 @@ public class FlowerBearingTree extends LargeTree implements Sellable {
         stockGarlands -= qty;
         System.out.println("  Sold " + qty + " garlands of " + flowerName + " @ Rs " + pricePerGarland + " each  =  Rs " + (qty * pricePerGarland));
     }
-    
+    @Override
     public void displayInfo() {
         super.displayInfo();
         System.out.println("  Flower    : " + flowerName + "  Stock: " + stockGarlands + " garlands  Price: Rs " + pricePerGarland + "/garland");
