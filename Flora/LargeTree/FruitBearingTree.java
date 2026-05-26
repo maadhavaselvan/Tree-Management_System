@@ -15,24 +15,27 @@ public class FruitBearingTree extends LargeTree implements Sellable {
         this.stockKg = stockKg;
         this.pricePerKg = pricePerKg;
     }
-
+    @Override
     public String getTreeType() 
     { 
         return "Fruit-Bearing Large Tree"; 
     }
+    @Override
     public double getSalePrice()
     { 
         return pricePerKg; 
     }
+    @Override
     public String getProductName()
     { 
         return fruitName; 
     }
+    @Override
     public int getAvailableStock()
     { 
         return stockKg; 
     }
-
+    @Override
     public void sell(int qty) throws InvalidSaleException {
         if (qty <= 0)
             throw new InvalidSaleException("Quantity must be > 0.");
@@ -48,7 +51,7 @@ public class FruitBearingTree extends LargeTree implements Sellable {
         stockKg += kg;
         System.out.println("  Harvested " + kg + " kg of " + fruitName + ". Total stock: " + stockKg + " kg.");
     }
-
+    @Override
     public void displayInfo() {
         super.displayInfo();
         System.out.println("  Fruit     : " + fruitName + "  Stock: " + stockKg + " kg  Price: Rs " + pricePerKg + "/kg");
