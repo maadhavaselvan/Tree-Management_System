@@ -3,26 +3,26 @@ import Flora.Flora;
 
 public class WaterTreatmentSystem {
 
-    private double   reservoirCapacityL;
-    private double   availableL;
-    private double   usedTodayL;
+    private double reservoirCapacityL;
+    private double availableL;
+    private double usedTodayL;
     private String[] zones;
     private double[] zoneAllocationL;
 
     public WaterTreatmentSystem(double capacityL, String[] zones, double[] allocations) {
         this.reservoirCapacityL = capacityL;
-        this.availableL         = capacityL;
-        this.usedTodayL         = 0;
-        this.zones              = zones;
-        this.zoneAllocationL    = allocations;
+        this.availableL = capacityL;
+        this.usedTodayL = 0;
+        this.zones = zones;
+        this.zoneAllocationL = allocations;
     }
 
     public void waterTree(Flora tree) throws InsufficientWaterException {
         double needed = tree.getWaterRequirementLiters();
         checkSupply(tree.getName(), needed);
         tree.water(needed);
-        availableL  -= needed;
-        usedTodayL  += needed;
+        availableL -= needed;
+        usedTodayL += needed;
     }
 
     private void checkSupply(String name, double needed) throws InsufficientWaterException {
@@ -32,15 +32,15 @@ public class WaterTreatmentSystem {
 
     public void refillReservoir(double liters) {
         availableL = Math.min(availableL + liters, reservoirCapacityL);
-        System.out.printf("  Reservoir refilled by %.1f L. Now at %.1f / %.1f L.%n", liters, availableL, reservoirCapacityL);
+       System.out.println("  Reservoir refilled by " + liters + " L. Now at " + availableL + " / " + reservoirCapacityL + " L.");
     }
 
     public void displayWaterReport() {
-        System.out.println("       WATER TREATMENT REPORT          ");
+        System.out.println("       WATER TREATMENT REPORT ");
         System.out.println("  Reservoir Capacity : " + reservoirCapacityL + " L");
-        System.out.println("  Available          : " + availableL + " L");
-        System.out.println("  Used Today         : " + usedTodayL + " L");
-        System.out.println("  Zone Allocations:                    ");
+        System.out.println("  Available : " + availableL + " L");
+        System.out.println("  Used Today : " + usedTodayL + " L");
+        System.out.println("  Zone Allocations:  ");
         for (int i = 0; i < zones.length; i++)
         {
             System.out.println("    " + zones[i] + " : " + zoneAllocationL[i] + " L    ");
