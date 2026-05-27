@@ -52,7 +52,9 @@ public class FlowerBearingPlant extends Plant implements Sellable {
         stockBunches += bunches;
         System.out.println(flowerName + " bloomed! +" + bunches + " bunches. Stock: " + stockBunches + ".");
     }
-    public boolean isSellable() { return true; }
+    public boolean isSellable() { 
+        return true;
+    }
     @Override
     public void displayInfo() {
         super.displayInfo();
