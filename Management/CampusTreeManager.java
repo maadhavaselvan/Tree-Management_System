@@ -28,13 +28,14 @@ public class CampusTreeManager
         throw new TreeNotFoundException("No tree found with ID " + id + ".");
     }
     public void listAllTrees() {
-        System.out.println("\n|────|──────────────────────|──────────────────────────|────────────────────|");
-        System.out.println("│ ID │ Name                 │ Type                     │ Location           │");
-        System.out.println("├────┼──────────────────────┼──────────────────────────┼────────────────────┤");
-        for (int i = 0; i < count; i++) {
-            System.out.println("│ " + trees[i].getTreeId() + " │ " + trees[i].getName() + " │ " + trees[i].getTreeType() + " │ " + trees[i].getLocation() + " │");
+        System.out.println("\n ----- ---------------------- -------------------------- -------------------- ");
+        System.out.println("| ID | Name                 | Type                     | Location           |");
+        System.out.println("|----|----------------------|--------------------------|--------------------|");
+        for(int i=0;i<count;i++)
+        {
+            System.out.printf("|%4s|%22s|%26s|%20s|%n",trees[i].getTreeId(),trees[i].getName(),trees[i].getTreeType(),trees[i].getLocation());
         }
-        System.out.println("|────|──────────────────────|──────────────────────────|────────────────────|");
+        System.out.println(" ---- ---------------------- -------------------------- --------------------");
         System.out.println("Total trees on campus: " + count);
     }
     public void listAllTrees(String filterType) {
@@ -148,10 +149,10 @@ public class CampusTreeManager
 
     public void displaySalesInventory() {
         System.out.println("\n Sellable Produce Inventory ");
-        System.out.println("  ID   Tree Name            Product                   Stock   Price (Rs)");
+        System.out.println("    ID             Tree Name                    Product  Stock  Price (Rs)  ");
         for (int i = 0; i < count; i++) {
             if (trees[i].isSellable()) {
-                System.out.println("  " + trees[i].getTreeId() + " " + trees[i].getName() + " " + trees[i].getProductName() + " " + trees[i].getAvailableStock() + " " + trees[i].getSalePrice());
+                System.out.printf("%6s %21s %25s %7d %10f %n",trees[i].getTreeId(),trees[i].getName(),trees[i].getProductName(),trees[i].getAvailableStock(),trees[i].getSalePrice());
             }
         }
     }

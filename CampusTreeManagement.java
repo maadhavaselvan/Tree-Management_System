@@ -192,7 +192,7 @@ public class CampusTreeManagement {
         double[] allocations = {1500,1250,1250,2000,4000 };
         WaterTreatmentSystem wts = new WaterTreatmentSystem(10000.0,zones,allocations);
 
-        CampusTreeManager mgr = new CampusTreeManager("INDIAN INSTITUTE OF INFORMATION TECHNOLOGY RAICHUR", 25, wts);
+        CampusTreeManager mgr = new CampusTreeManager("INDIAN INSTITUTE OF INFORMATION TECHNOLOGY RAICHUR", 50, wts);
 
         System.out.println("    Tree Management System");
         System.out.println("   INDIAN INSTITUTE OF INFORMATION TECHNOLOGY RAICHUR");
