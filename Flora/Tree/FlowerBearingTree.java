@@ -1,7 +1,6 @@
 package Flora.Tree;
-import Management.Sellable;
 import Management.InvalidSaleException;
-public class FlowerBearingTree extends Tree implements Sellable {
+public class FlowerBearingTree extends Tree  {
 
     private final String flowerName;
     private int stockGarlands;
@@ -39,8 +38,7 @@ public class FlowerBearingTree extends Tree implements Sellable {
         if (qty <= 0)
             throw new InvalidSaleException("Quantity must be > 0.");
         if (qty > stockGarlands)
-            throw new InvalidSaleException(
-                    "Only " + stockGarlands + " garlands of " + flowerName + " available.");
+            throw new InvalidSaleException("Only " + stockGarlands + " garlands of " + flowerName + " available.");
         stockGarlands -= qty;
         System.out.println("  Sold " + qty + " garlands of " + flowerName + " @ Rs " + pricePerGarland + " each  =  Rs " + (qty * pricePerGarland));
     }

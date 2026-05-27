@@ -1,8 +1,7 @@
 package Flora.Tree;
-import Management.Sellable;
 import Management.InvalidSaleException;
 import Management.InvalidHarvestException;
-public class FruitBearingTree extends Tree implements Sellable {
+public class FruitBearingTree extends Tree  {
 
     private final String fruitName;
     private int stockKg;

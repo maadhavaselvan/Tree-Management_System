@@ -1,7 +1,6 @@
 package Flora.Plant;
-import Management.Sellable;
 import Management.InvalidSaleException;
-public class FlowerBearingPlant extends Plant implements Sellable {
+public class FlowerBearingPlant extends Plant  {
 
     private final String flowerName;
     private int stockBunches;
@@ -20,6 +19,10 @@ public class FlowerBearingPlant extends Plant implements Sellable {
     {
         return "Flower-Bearing Plant";
     }
+     @Override
+    public String getCareInstructions() {
+        return "Water daily; add compost weekly. Peak bloom: " + bloomSeason + ".";
+    }
     @Override
     public double getSalePrice()
     {
@@ -35,10 +38,7 @@ public class FlowerBearingPlant extends Plant implements Sellable {
     {
         return stockBunches;
     }
-    @Override
-    public String getCareInstructions() {
-        return "Water daily; add compost weekly. Peak bloom: " + bloomSeason + ".";
-    }
+   
     @Override
     public void sell(int qty) throws InvalidSaleException {
         if (qty <= 0)
@@ -52,13 +52,14 @@ public class FlowerBearingPlant extends Plant implements Sellable {
         stockBunches += bunches;
         System.out.println(flowerName + " bloomed! +" + bunches + " bunches. Stock: " + stockBunches + ".");
     }
-    public boolean isSellable() { 
-        return true;
-    }
+   
     @Override
     public void displayInfo() {
         super.displayInfo();
         System.out.println("Flower : " + flowerName + "  Stock: " + stockBunches + " bunches  Price: Rs " + pricePerBunch + "/bunch");
         System.out.println("Bloom : " + bloomSeason);
+    }
+    public boolean isSellable() {
+        return true;
     }
 }

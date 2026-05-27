@@ -31,8 +31,14 @@ public class WaterTreatmentSystem {
     }
 
     public void refillReservoir(double liters) {
-        availableL = Math.min(availableL + liters, reservoirCapacityL);
-       System.out.println("  Reservoir refilled by " + liters + " L. Now at " + availableL + " / " + reservoirCapacityL + " L.");
+        if(availableL+liters <= reservoirCapacityL){
+            availableL=availableL+liters;
+            System.out.println(" Reservoir refilled by " + liters + " L. Now at " + availableL + " / " + reservoirCapacityL + " L.");
+        }
+        else{
+            availableL=reservoirCapacityL;
+            System.out.println(" Reservoir  cannot be refilled... Reached capacity limit "  + reservoirCapacityL + " L.");
+        }
     }
 
     public void displayWaterReport() {

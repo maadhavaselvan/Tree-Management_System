@@ -18,6 +18,10 @@ public class Plant extends Flora {
     {
         return 0.3;
     }
+    @Override public String getCareInstructions() 
+    {
+        return isPotted ? "Water daily; keep under partial sunlight." : "Water every 2 days; weed bed weekly.";
+    }
     @Override public double getWaterFrequencyDays()
     {
         return isPotted ? 1.0 : 2.0;
@@ -26,10 +30,7 @@ public class Plant extends Flora {
     {
         return 0.5;
     }
-    @Override
-    public String getCareInstructions() {
-        return isPotted ? "Water daily; keep under partial sunlight." : "Water every 2 days; weed bed weekly.";
-    }
+    
     @Override
     public void water(double liters) throws InsufficientWaterException {
         if (liters <= 0)
@@ -48,9 +49,5 @@ public class Plant extends Flora {
         System.out.println("Potted : " + isPotted);
         System.out.println(getWaterStatus());
     }
-    public void displayInfo(boolean showCost) {
-        displayInfo();
-        if (showCost)
-            System.out.println("  Maintenance cost: approx Rs 200/month");
-    }
+    
 }

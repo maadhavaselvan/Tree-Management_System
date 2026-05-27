@@ -1,6 +1,7 @@
 package Flora;
+import Management.Sellable;
 import Management.Waterable;
-public abstract class Flora implements Waterable {
+public abstract class Flora implements Waterable,Sellable {
 
     private final int treeId;
     private String name;
@@ -16,15 +17,17 @@ public abstract class Flora implements Waterable {
         this.heightMeters = heightMeters;
         this.treeId = ++idCounter;
     }
+    public abstract String getTreeType();
+    public abstract String getCareInstructions();
+    public abstract double estimatedGrowthPerYear();
+
     public void harvest(int amount) throws Management.InvalidHarvestException {
-        System.out.println("  [!] " + getName() + " does not produce harvestable fruit.");
+        throw new Management.InvalidHarvestException( getName() + " does not produce harvestable fruit.");
     }
     public void sell(int qty) throws Management.InvalidSaleException {
         throw new Management.InvalidSaleException(getName() + " has no sellable produce.");
     }
-    public abstract String getTreeType();
-    public abstract String getCareInstructions();
-    public abstract double estimatedGrowthPerYear();
+    
     public boolean isSellable(){ 
         return false; 
     }

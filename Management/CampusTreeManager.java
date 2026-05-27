@@ -33,7 +33,7 @@ public class CampusTreeManager
         System.out.println("|----|----------------------|--------------------------|--------------------|");
         for(int i=0;i<count;i++)
         {
-            System.out.printf("|%4s|%22s|%26s|%20s|%n",trees[i].getTreeId(),trees[i].getName(),trees[i].getTreeType(),trees[i].getLocation());
+            System.out.printf("|%4d|%22s|%26s|%20s|%n",trees[i].getTreeId(),trees[i].getName(),trees[i].getTreeType(),trees[i].getLocation());
         }
         System.out.println(" ---- ---------------------- -------------------------- --------------------");
         System.out.println("Total trees on campus: " + count);
@@ -99,7 +99,7 @@ public class CampusTreeManager
         boolean found = false;
         for (int i = 0; i < count; i++) {
             if (trees[i].getLocation().toLowerCase().equals(zone.toLowerCase())) {
-                System.out.println("    [" + trees[i].getTreeId() + "] " + trees[i].getName() + " – " + trees[i].getTreeType());
+                System.out.println("    [" + trees[i].getTreeId() + "] " + trees[i].getName() + " - " + trees[i].getTreeType());
                 found = true;
             }
         }
@@ -125,8 +125,11 @@ public class CampusTreeManager
             Flora t = findTreeById(treeId);
             t.sell(quantity);
         }
-        catch (TreeNotFoundException | InvalidSaleException e) {
+        catch ( InvalidSaleException e) {
             System.out.println("[Sale Error]" + e.getMessage());
+        }
+        catch (TreeNotFoundException e){
+            System.out.println("[Tree Not Found Error]" + e.getMessage());
         }
     }
     public void harvestFromTree(int treeId, int amount) {
@@ -134,8 +137,11 @@ public class CampusTreeManager
             Flora t = findTreeById(treeId);
             t.harvest(amount); 
         }
-        catch (TreeNotFoundException | InvalidHarvestException e) {
+        catch ( InvalidHarvestException e) {
             System.out.println("[Harvest Error]" + e.getMessage());
+        }
+        catch (TreeNotFoundException e){
+            System.out.println("[Tree Not Found Error]" + e.getMessage());
         }
     }
 
@@ -156,5 +162,8 @@ public class CampusTreeManager
             }
         }
     }
-    public WaterTreatmentSystem getWaterSystem() { return waterSystem; }
+    public WaterTreatmentSystem getWaterSystem()
+    { 
+        return waterSystem; 
+    }
 }

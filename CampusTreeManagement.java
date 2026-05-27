@@ -78,7 +78,8 @@ public class CampusTreeManagement {
         while (true) {
             System.out.print(prompt);
             try {
-                double val = sc.nextDouble(); sc.nextLine();
+                double val = sc.nextDouble();
+                sc.nextLine();
                 return val;
             }
             catch (InputMismatchException e) {
@@ -159,7 +160,7 @@ public class CampusTreeManagement {
                 }
 
                 case 5: {
-                    double canopy=readDouble(sc,"Canopy spread (m) : ");
+                    double canopy=readDouble(sc,"Canopy Radius (m) : ");
 
                     mgr.addTree(new ShadeTree(name, location, age, height, canopy));
                     break;

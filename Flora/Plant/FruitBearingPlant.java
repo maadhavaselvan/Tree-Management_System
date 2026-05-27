@@ -1,8 +1,7 @@
 package Flora.Plant;
-import Management.Sellable;
 import Management.InvalidSaleException;
 import Management.InvalidHarvestException;
-public class FruitBearingPlant extends Plant implements Sellable {
+public class FruitBearingPlant extends Plant  {
 
     private final String fruitName;
     private int stockKg;
@@ -24,6 +23,10 @@ public class FruitBearingPlant extends Plant implements Sellable {
     {
         return "Fruit-Bearing Plant";
     }
+    @Override
+    public String getCareInstructions() {
+        return "Water every 2 days; fertilize monthly (months "+ harvestStart + " - " + harvestEnd + ").";
+    }
     @Override public double getSalePrice()
     {
         return pricePerKg;
@@ -35,10 +38,6 @@ public class FruitBearingPlant extends Plant implements Sellable {
     @Override public int getAvailableStock()
     {
         return stockKg;
-    }
-    @Override
-    public String getCareInstructions() {
-        return "Water every 2 days; fertilize monthly (months "+ harvestStart + "–" + harvestEnd + ").";
     }
     @Override
     public void sell(int qty) throws InvalidSaleException {
