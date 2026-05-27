@@ -100,7 +100,7 @@ public class CampusTreeManagement {
         String name = sc.nextLine();
         String location=locations(sc);
         int age=readInt(sc,"Enter the age : ");
-        double height=readDouble(sc,"Enter your Height(meters) : ");
+        double height=readDouble(sc,"Enter the Height(meters) : ");
         try {
             switch (type) {
                 case 1: {
