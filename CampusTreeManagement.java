@@ -11,7 +11,8 @@ public class CampusTreeManagement {
         while (true) {
             System.out.print(prompt);
             try {
-                int value = sc.nextInt(); sc.nextLine();
+                int value = sc.nextInt(); 
+                sc.nextLine();
                 return value;
             }
             catch (InputMismatchException e) {
