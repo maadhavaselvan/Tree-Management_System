@@ -8,8 +8,8 @@ public class CampusTreeManager
     private final WaterTreatmentSystem waterSystem;
     public CampusTreeManager(String campusName, int capacity, WaterTreatmentSystem ws) {
         this.campusName=campusName;
-        this.trees=new Flora[capacity];
-        this.count=0;
+        this.trees = new Flora[capacity];
+        this.count = 0;
         this.waterSystem=ws;
     }
     public void addTree(Flora t) {

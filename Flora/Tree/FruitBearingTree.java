@@ -5,7 +5,7 @@ public class FruitBearingTree extends Tree  {
 
     private final String fruitName;
     private int stockKg;
-    private final double pricePerKg;
+    private double pricePerKg;
 
     public FruitBearingTree(String name, String location, int age, double height, String fruitName, int stockKg, double pricePerKg) {
         super(name, location, age, height);
@@ -21,7 +21,13 @@ public class FruitBearingTree extends Tree  {
     @Override
     public double getSalePrice()
     {
+        if(newPrice!=0)
+            return newPrice;
         return pricePerKg;
+    }
+    public void price()
+    {
+        pricePerKg=newPrice;
     }
     @Override
     public String getProductName()
@@ -33,7 +39,10 @@ public class FruitBearingTree extends Tree  {
     {
         return stockKg;
     }
-    public boolean isSellable() { return true; }
+    public boolean isSellable() 
+    { 
+        return true; 
+    }
     @Override
     public void sell(int qty) throws InvalidSaleException {
         if (qty <= 0)

@@ -5,7 +5,7 @@ public class FruitBearingPlant extends Plant  {
 
     private final String fruitName;
     private int stockKg;
-    private final double pricePerKg;
+    private double pricePerKg;
     private final int harvestStart;
     private final int harvestEnd;
 
@@ -27,9 +27,16 @@ public class FruitBearingPlant extends Plant  {
     public String getCareInstructions() {
         return "Water every 2 days; fertilize monthly (months "+ harvestStart + " - " + harvestEnd + ").";
     }
-    @Override public double getSalePrice()
+    @Override
+    public double getSalePrice()
     {
+        if(newPrice!=0)
+            return newPrice;
         return pricePerKg;
+    }
+        public void price()
+    {
+        pricePerKg=newPrice;
     }
     @Override public String getProductName()
     {

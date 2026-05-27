@@ -4,7 +4,7 @@ public class FlowerBearingTree extends Tree  {
 
     private final String flowerName;
     private int stockGarlands;
-    private final double pricePerGarland;
+    private double pricePerGarland;
 
     public FlowerBearingTree(String name, String location, int age, double height, String flowerName, int stockGarlands, double pricePerGarland)
     {
@@ -21,7 +21,13 @@ public class FlowerBearingTree extends Tree  {
     @Override
     public double getSalePrice()
     {
+        if(newPrice!=0)
+            return newPrice;
         return pricePerGarland;
+    }
+    public void price()
+    {
+        pricePerGarland=newPrice;
     }
     @Override
     public String getProductName()
@@ -42,7 +48,10 @@ public class FlowerBearingTree extends Tree  {
         stockGarlands -= qty;
         System.out.println("  Sold " + qty + " garlands of " + flowerName + " @ Rs " + pricePerGarland + " each  =  Rs " + (qty * pricePerGarland));
     }
-    public boolean isSellable() { return true; }
+    public boolean isSellable()
+    { 
+        return true; 
+    }
     @Override
     public void displayInfo() {
         super.displayInfo();

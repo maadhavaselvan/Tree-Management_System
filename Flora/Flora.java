@@ -1,6 +1,7 @@
 package Flora;
 import Management.Sellable;
 import Management.Waterable;
+import java.util.Scanner;
 public abstract class Flora implements Waterable,Sellable {
 
     private final int treeId;
@@ -9,7 +10,7 @@ public abstract class Flora implements Waterable,Sellable {
     private int ageYears;
     private double heightMeters;
     private static int idCounter = 0;
-
+    protected double newPrice=0;
     public Flora(String name, String location, int ageYears, double heightMeters) {
         this.name = name;
         this.location = location;
@@ -40,6 +41,17 @@ public abstract class Flora implements Waterable,Sellable {
     public int getAvailableStock() { 
         return 0;
     }
+    public void changeSalePrice()
+    {
+        System.out.print("Enter the price of product:");
+        Scanner sc=new Scanner(System.in);
+        this.newPrice=sc.nextDouble();
+        price();
+    }
+    public void price()
+    {
+
+    }
     public void displayInfo() {
         System.out.println(" ID : " + treeId);
         System.out.println(" Name : " + name);
@@ -67,7 +79,6 @@ public abstract class Flora implements Waterable,Sellable {
     {
         return heightMeters;
     }
-
     public void setName(String n)
     {
         this.name = n;

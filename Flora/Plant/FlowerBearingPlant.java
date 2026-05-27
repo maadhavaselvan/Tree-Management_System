@@ -4,7 +4,7 @@ public class FlowerBearingPlant extends Plant  {
 
     private final String flowerName;
     private int stockBunches;
-    private final double pricePerBunch;
+    private double pricePerBunch;
     private final String bloomSeason;
 
     public FlowerBearingPlant(String name, String location, int age, double height, boolean potted, String flowerName, int stockBunches, double pricePerBunch, String bloomSeason) {
@@ -26,6 +26,8 @@ public class FlowerBearingPlant extends Plant  {
     @Override
     public double getSalePrice()
     {
+        if(newPrice!=0)
+            return newPrice;
         return pricePerBunch;
     }
     @Override
@@ -52,7 +54,10 @@ public class FlowerBearingPlant extends Plant  {
         stockBunches += bunches;
         System.out.println(flowerName + " bloomed! +" + bunches + " bunches. Stock: " + stockBunches + ".");
     }
-   
+    public void price()
+    {
+        pricePerBunch=newPrice;
+    }
     @Override
     public void displayInfo() {
         super.displayInfo();

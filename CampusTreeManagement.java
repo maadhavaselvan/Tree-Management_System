@@ -239,7 +239,8 @@ public class CampusTreeManagement {
             System.out.println("10. Water treatment report");
             System.out.println("11. Full campus tree report");
             System.out.println("12. Add a new tree");
-            System.out.println("13. Exit");
+            System.out.println("13. Change Price of Product");
+            System.out.println("14. Exit");
 
             int choice = readInt(sc,"Enter choice: ");
 
@@ -320,13 +321,26 @@ public class CampusTreeManagement {
                     break;
 
                 case 13:
+                    id=readInt(sc,"Enter The Tree Id to change the price:");
+                    try
+                    {
+                        Flora f=mgr.findTreeById(id);
+                        f.changeSalePrice();
+                    }
+                    catch(TreeNotFoundException e)
+                    {
+                        System.out.println("No Tree with that id exist");
+                    }
+                    break;
+
+                case 14:
                     System.out.println("\nExiting... Total trees ever registered: " + Flora.getTotalCreated());
                     System.out.println("Goodbye!\n");
                     running = false;
                     break;
 
                 default:
-                    System.out.println("Invalid choice. Choose 1–13.");
+                    System.out.println("Invalid choice. Choose 1–14.");
             }
         }
         sc.close();
