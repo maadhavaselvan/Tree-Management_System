@@ -25,10 +25,18 @@ public abstract class Flora implements Waterable {
     public abstract String getTreeType();
     public abstract String getCareInstructions();
     public abstract double estimatedGrowthPerYear();
-    public boolean isSellable(){ return false; }
-    public String  getProductName(){ return ""; }
-    public double  getSalePrice(){ return 0.0; }
-    public int getAvailableStock() { return 0; }
+    public boolean isSellable(){ 
+        return false; 
+    }
+    public String  getProductName(){ 
+        return "";
+    }
+    public double  getSalePrice(){ 
+        return 0.0;
+    }
+    public int getAvailableStock() { 
+        return 0;
+    }
     public void displayInfo() {
         System.out.println(" ID : " + treeId);
         System.out.println(" Name : " + name);
